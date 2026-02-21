@@ -1,5 +1,5 @@
 export async function login({ username, password }) {
-  const res = await fetch("/api/auth/login", {
+  const res = await fetch("https://dummyjson.com/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export async function login({ username, password }) {
 }
 
 export async function logout() {
-  const res = await fetch("/api/auth/logout", {
+  const res = await fetch("https://dummyjson.com/auth/logout", {
     method: "POST",
     credentials: "include",
   });
@@ -32,7 +32,7 @@ export async function logout() {
 }
 
 export async function getCurrentUser() {
-  const res = await fetch("/api/auth/me", {
+  const res = await fetch("https://dummyjson.com/auth/me", {
     method: "GET",
     credentials: "include",
   });

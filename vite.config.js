@@ -5,7 +5,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // Svi pozivi koji počinju sa /api biće proslijeđeni na dummyjson.com
       "/api": {
         target: "https://dummyjson.com",
         changeOrigin: true,
