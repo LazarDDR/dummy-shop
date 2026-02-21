@@ -9,6 +9,7 @@ export async function login({ username, password }) {
       username,
       password,
     }),
+    credentials: "include",
   });
 
   if (!res.ok) throw new Error("Invalid email or password");
