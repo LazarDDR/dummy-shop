@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  color: #1c1917;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select,
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.rating {
+  display: flex;
+  gap: 2px;
+  font-size: 2rem;
+}
+
+.rating-num {
+  font-size: 1.8rem;
+  transform: translateY(2px);
+  margin-right: 0.5rem;
+}
