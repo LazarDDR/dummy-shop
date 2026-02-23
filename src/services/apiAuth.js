@@ -1,58 +1,55 @@
-// api.js
-// DummyJSON API login bez CORS problema
+const API_URL = "https://dummyjson.com";
 
-let authToken = null; // token iz login-a
-let currentUser = null; // trenutno ulogovani user
-
-// Login funkcija
+// LOGIN
 export async function login({ username, password }) {
-  const res = await fetch("https://dummyjson.com/auth/login", {
+  const res = await fetch(`${API_URL}/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({
+      username,
+      password,
+    }),
   });
 
   if (!res.ok) throw new Error("Invalid username or password");
 
   const data = await res.json();
 
-  // Sačuvaj token i user-a
-  authToken = data.token;
-  currentUser = {
-    id: data.id,
-    username: data.username,
-    email: data.email,
-  };
+  localStorage.setItem("accessToken", data.accessToken);
+  localStorage.setItem("refreshToken", data.refreshToken);
 
-  // Sačuvaj u localStorage da ostane nakon refresh-a
-  localStorage.setItem("authToken", authToken);
-  localStorage.setItem("currentUser", JSON.stringify(currentUser));
-
-  return currentUser;
+  return data;
 }
 
-// Logout funkcija
-export function logout() {
-  authToken = null;
-  currentUser = null;
-  localStorage.removeItem("authToken");
-  localStorage.removeItem("currentUser");
+// LOGOUT
+export async function logout() {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("refreshToken");
+
+  return true;
 }
 
-// Dohvati trenutno ulogovanog korisnika
-export function getCurrentUser() {
-  if (currentUser) return currentUser;
+// GET CURRENT USER
+export async function getCurrentUser() {
+  const token = localStorage.getItem("accessToken");
 
-  // Ako je refreshovan page, učitaj iz localStorage
-  const savedUser = localStorage.getItem("currentUser");
-  const savedToken = localStorage.getItem("authToken");
+  if (!token) return null;
 
-  if (!savedUser || !savedToken) return null;
+  const res = await fetch(`${API_URL}/auth/me`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
-  authToken = savedToken;
-  currentUser = JSON.parse(savedUser);
+  if (!res.ok) {
+    localStorage.removeItem("accessToken");
+    return null;
+  }
 
-  return currentUser;
+  const data = await res.json();
+
+  return data;
 }
