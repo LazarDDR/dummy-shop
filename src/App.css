@@ -42,7 +42,7 @@ grays: #1c1917
 .app {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  min-height: 85rem;
+  min-height: 100vh;
 }
 
 .login-container {
@@ -112,12 +112,6 @@ grays: #1c1917
 .header-icon {
   color: #eceef8;
   font-size: 3rem;
-}
-
-.header-logo-box {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .header-logo {
@@ -906,4 +900,8 @@ button:disabled {
   border-radius: 6px;
   padding: 1rem 0;
   margin-top: 1rem;
+}
+
+/* MOBILE override */
+@media (max-width: 768px) {
 }
