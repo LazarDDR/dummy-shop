@@ -6,6 +6,8 @@ import { useSearchProducts } from "./useSearchProducts";
 import { useSearchParams } from "react-router";
 import Pagination from "../../ui/Pagination";
 
+import { useIsMobile } from "../hooks/useIsMobile";
+
 function Shop() {
   const [searchParams] = useSearchParams();
 
@@ -13,19 +15,29 @@ function Shop() {
   const page = Number(searchParams.get("page")) || 1;
   const query = useSelector((store) => store.shop.searchQuery);
 
-  const { data, isLoading } = useAllProducts({ category, page });
+  const isMobile = useIsMobile();
 
-  const { searchedProducts, isSearching } = useSearchProducts({ query, page });
+  console.log(isMobile);
+
+  const limit = isMobile ? 9 : 8;
+
+  const { data, isLoading } = useAllProducts({ category, page, limit });
+
+  const { searchedProducts, isSearching } = useSearchProducts({
+    query,
+    page,
+    limit,
+  });
 
   if (isLoading || isSearching) return <Spinner />;
   // if (true) return <Spinner />;
 
   let products = data.products;
-  let numPages = Math.ceil(data.total / 8);
+  let numPages = Math.ceil(data.total / limit);
 
   if (query) {
     products = searchedProducts.products;
-    numPages = Math.ceil(searchedProducts.total / 8);
+    numPages = Math.ceil(searchedProducts.total / limit);
   }
 
   return (

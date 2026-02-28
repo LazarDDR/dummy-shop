@@ -8,10 +8,12 @@ export async function getCategoriesList() {
   return data;
 }
 
-export async function getAllProducts({ category, page }) {
+export async function getAllProducts({ category, page, limit }) {
   let URL = `https://dummyjson.com/products`;
 
-  const limit = 8;
+  // const limit = 8;
+  // console.log(limit);
+
   let skip = limit * (page - 1);
   if (!page) skip = 0;
 
@@ -30,12 +32,11 @@ export async function getAllProducts({ category, page }) {
   return data;
 }
 
-export async function searchProducts({ query, signal, page }) {
+export async function searchProducts({ query, signal, page, limit }) {
   if (!query) return null;
 
   let URL = `https://dummyjson.com/products/search?q=${query}`;
 
-  const limit = 8;
   let skip = limit * (page - 1);
   if (!page) skip = 0;
 
@@ -43,14 +44,11 @@ export async function searchProducts({ query, signal, page }) {
 
   if (skip) URL = `${URL}&skip=${skip}`;
 
-  const res = await fetch(URL, {
-    signal,
-  });
+  const res = await fetch(URL, { signal });
+
   if (!res.ok) throw new Error(`Failed to fetch data: ${res.status}`);
 
-  const data = await res.json();
-
-  return data;
+  return await res.json();
 }
 
 export async function getProduct(id) {
