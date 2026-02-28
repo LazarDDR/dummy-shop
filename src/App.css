@@ -274,7 +274,7 @@ main {
 }
 
 .main {
-  min-height: 100dvh;
+  min-height: 100svh;
   height: 100%;
   position: relative;
   color: #181817;
