@@ -287,7 +287,7 @@ main {
   align-items: center;
   transition: all 300ms;
   padding-bottom: 2rem;
-  height: 100dvh;
+  height: 100svh;
 }
 
 .products-container {
@@ -377,6 +377,7 @@ main {
   align-items: center;
   gap: 1rem;
   margin-top: auto;
+  margin-bottom: 5rem;
 }
 
 .pagination-btn {
@@ -915,13 +916,18 @@ button:disabled {
     font-size: 40%;
   }
 
+  .header-logo {
+    width: 18m;
+  }
+
   .products-container {
     grid-template-columns: repeat(3, 1fr);
     padding: 3rem 4rem;
-    /* padding-top: 4rem; */
+    padding-top: 4rem;
   }
 
   .product-container {
+    /* width: 18rem; */
     width: 18rem;
     height: 30rem;
     /* transition: all 300ms; */
