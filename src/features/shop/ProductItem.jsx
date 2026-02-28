@@ -51,6 +51,7 @@ function ProductItem({ product }) {
       >
         <div className="product-img-box">
           {!imgLoaded && <Spinner />}
+
           <motion.img
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, x: 0 }}

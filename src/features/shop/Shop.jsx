@@ -18,6 +18,7 @@ function Shop() {
   const { searchedProducts, isSearching } = useSearchProducts({ query, page });
 
   if (isLoading || isSearching) return <Spinner />;
+  // if (true) return <Spinner />;
 
   let products = data.products;
   let numPages = Math.ceil(data.total / 8);
