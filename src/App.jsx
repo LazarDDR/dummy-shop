@@ -12,6 +12,7 @@ import UserProfile from "./features/user/UserProfile";
 import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./features/user/ProtectedRoute";
 import PageNotFound from "./ui/PageNotFound";
+import { useIsMobile } from "./features/hooks/useIsMobile";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,6 +24,8 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+  const isMobile = useIsMobile();
+
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
@@ -51,7 +54,7 @@ function App() {
       </BrowserRouter>
 
       <Toaster
-        position="bottom-right"
+        position={isMobile ? "bottom-center" : "bottom-right"}
         gutter={12}
         containerStyle={{ margin: "8px" }}
         toastOptions={{
