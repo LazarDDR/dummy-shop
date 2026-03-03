@@ -423,8 +423,8 @@ button:disabled {
 .product-details-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 3rem 0;
-  width: 102rem;
+  padding: 3rem 3rem;
+  max-width: 102rem;
   height: 100rem;
 }
 
@@ -961,6 +961,14 @@ button:disabled {
 
   .search-input:focus {
     width: 9rem;
+  }
+
+  .reviews {
+    grid-template-columns: 1fr;
+  }
+
+  .image-btn {
+    margin-right: unset;
   }
 }
 
