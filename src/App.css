@@ -510,9 +510,10 @@ button:disabled {
 }
 
 .qty-btn {
-  width: 4rem;
+  max-width: 4rem;
   height: 4rem;
   font-size: 2rem;
+  padding: 0 1rem;
   color: #33302e;
 }
 
@@ -526,11 +527,12 @@ button:disabled {
 
 .add-btn {
   background-color: #3f51b5;
-  width: 20rem;
+  max-width: 20rem;
   font-size: 2.5rem;
   color: #ebebeb;
   font-weight: 600;
   border-radius: 6px;
+  padding: 0 1rem;
 }
 
 .add-btn:hover {
@@ -975,9 +977,9 @@ button:disabled {
     padding: 1rem;
   }
 
-  .add-btn {
+  /* .add-btn {
     width: 16rem;
-  }
+  } */
 }
 
 @media (min-width: 1440px) {
