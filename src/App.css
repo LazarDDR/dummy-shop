@@ -977,6 +977,14 @@ button:disabled {
     overflow: hidden;
   }
 
+  .comment {
+    font-size: 2.2rem;
+  }
+
+  .reviewer-name {
+    font-size: 2rem;
+  }
+
   .pagination-container {
     gap: 0.5rem;
   }
