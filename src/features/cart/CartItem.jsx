@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { decItemQty, incItemQty, removeCartItem } from "../../redux/cartSlice";
-import { HiMiniXMark } from "react-icons/hi2";
+import { HiMiniXMark, HiOutlineMinus, HiOutlinePlus } from "react-icons/hi2";
 import { Link } from "react-router";
 import toast from "react-hot-toast";
 
@@ -63,7 +63,7 @@ function CartItem({ product }) {
       <div className="cart-qty-inputs-box">
         <div className="cart-qty-inputs">
           <button onClick={handleDecQty} className="cart-qty-btn">
-            &#8722;
+            <HiOutlineMinus />
           </button>
           <input
             className="cart-qty-input"
@@ -73,7 +73,7 @@ function CartItem({ product }) {
             readOnly
           ></input>
           <button onClick={handleIncQty} className="cart-qty-btn">
-            &#43;
+            <HiOutlinePlus />
           </button>
         </div>
       </div>
