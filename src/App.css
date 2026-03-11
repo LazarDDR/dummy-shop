@@ -183,6 +183,7 @@ grays: #1c1917
   justify-content: flex-start;
   align-items: center;
   gap: 0.7rem;
+  padding-right: 1rem;
 }
 
 .user-menu {
@@ -710,7 +711,7 @@ button:disabled {
   color: #595658;
   text-align: center;
   margin-top: 6rem;
-  wwidth: 100%;
+  width: 100%;
   max-width: 102rem;
 }
 
@@ -881,8 +882,8 @@ button:disabled {
   display: flex;
   width: 80%;
   /* justify-content: center; */
-  align-items: flex-end;
-  padding: 2rem 0;
+  /* align-items: flex-end; */
+  padding: 4rem 0;
   height: 14rem;
   border-bottom: 1px solid #d2d1d1;
 }
