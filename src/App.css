@@ -710,7 +710,8 @@ button:disabled {
   color: #595658;
   text-align: center;
   margin-top: 6rem;
-  width: 102rem;
+  wwidth: 100%;
+  max-width: 102rem;
 }
 
 .cart-container {
