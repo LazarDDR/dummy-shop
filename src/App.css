@@ -963,6 +963,7 @@ button:disabled {
 
   .products-container {
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     padding: 3rem 1rem;
     padding-top: 4rem;
   }
