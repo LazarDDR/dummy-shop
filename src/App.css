@@ -999,7 +999,7 @@ button:disabled {
 }
 
 .product-details-spinner {
-  width: 102rem;
+  max-width: 102rem;
 }
 
 .img-spinner-box {
