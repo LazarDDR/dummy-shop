@@ -50,7 +50,11 @@ function ProductItem({ product }) {
         to={`/product-details/${id}`}
       >
         <div className="product-img-box">
-          {!imgLoaded && <Spinner />}
+          {!imgLoaded && (
+            <div className="img-spinner-box">
+              <Spinner />
+            </div>
+          )}
 
           <motion.img
             initial={{ opacity: 0 }}
@@ -62,8 +66,9 @@ function ProductItem({ product }) {
             onLoad={() => setImgLoaded(true)}
           />
         </div>
-        <p className="product-title  ">{title}</p>
-        <p className="product-price  ">${discountedPrice}</p>
+
+        <p className="product-title ">{title}</p>
+        <p className="product-price ">${discountedPrice}</p>
       </Link>
 
       <motion.button
