@@ -325,7 +325,7 @@ main {
   /* padding: 3rem 10rem; */
   padding: 3rem 10rem;
   gap: 4rem 2rem;
-  justify-content: center;
+  /* justify-items: center; */
   align-items: center;
   max-width: 100%;
 }
@@ -1057,6 +1057,7 @@ button:disabled {
     padding: 3rem 1rem;
     padding-top: 4rem;
     /* width: 100%; */
+    justify-items: center;
   }
 
   .product-container {
