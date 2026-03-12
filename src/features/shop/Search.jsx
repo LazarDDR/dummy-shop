@@ -26,10 +26,15 @@ function Search() {
     dispatch(setSearchQuery(e.target.value));
   }
 
+  function handleClearSearchQuery() {
+    dispatch(setSearchQuery(""));
+  }
+
   return (
     <div className="search-box">
       <HiMagnifyingGlass className="header-icon header-icon-search" />
       <input
+        onFocus={handleClearSearchQuery}
         onChange={handleOnChange}
         className="search-input"
         name="search"
