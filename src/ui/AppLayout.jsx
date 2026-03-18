@@ -43,7 +43,7 @@ function AppLayout() {
         <AnimatePresence mode="wait">
           {showCategories && <CategoriesMenu key="categories-menu" />}
         </AnimatePresence>
-        {/* <Outlet /> */}
+        <Outlet />
       </main>
       <Footer />
     </div>
