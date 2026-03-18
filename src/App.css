@@ -130,7 +130,7 @@ grays: #1c1917
 }
 
 .header-logo {
-  width: 18rem;
+  max-width: 18rem;
 }
 
 .search-box {
@@ -233,7 +233,7 @@ grays: #1c1917
 }
 
 .search-input {
-  width: 9rem;
+  max-width: 9rem;
   transition: all 300ms;
   color: #3f51b5;
   font-weight: 500;
@@ -424,6 +424,7 @@ main {
   align-items: center;
   gap: 1rem;
   margin-top: auto;
+  width: 100%;
   /* margin-bottom: 9rem; */
 }
 
@@ -1024,7 +1025,7 @@ button:disabled {
   }
 
   .user-cart-container {
-    gap: 0.5rem;
+    gap: 0rem;
     /* max-width: 102rem; */
   }
 
@@ -1042,11 +1043,14 @@ button:disabled {
   }
 
   .search-input:focus {
-    width: 7rem;
+    max-width: 7rem;
+  }
+  .header-container {
+    padding: 1rem;
   }
 
   .header-logo {
-    width: 18m;
+    padding: 2rem;
   }
 
   .shop-container {

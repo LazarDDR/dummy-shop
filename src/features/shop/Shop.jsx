@@ -59,7 +59,7 @@ function Shop() {
           <p className="no-results">No products match your search.</p>
         )}
       </div>
-      {/* {numPages > 1 && <Pagination numPages={numPages} />} */}
+      {numPages > 1 && <Pagination numPages={numPages} />}
     </div>
   );
 }

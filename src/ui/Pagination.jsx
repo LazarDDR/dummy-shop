@@ -7,10 +7,12 @@ import {
 } from "react-icons/hi2";
 import { useSearchParams } from "react-router";
 import PaginationBtn from "./PaginationBtn";
+import { useIsMobile } from "../features/hooks/useIsMobile";
 
 function Pagination({ numPages }) {
   const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
   const currentPage = Number(searchParams.get("page")) || 1;
+  const isMobile = useIsMobile();
 
   function handlePageChange(newPage) {
     searchParams.set("page", newPage);
@@ -34,7 +36,7 @@ function Pagination({ numPages }) {
   }
 
   const pageNumbers = [];
-  const maxVisible = 7;
+  const maxVisible = isMobile ? 5 : 7;
   let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
   let endPage = startPage + maxVisible - 1;
 
