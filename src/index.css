@@ -22,6 +22,8 @@ button {
   cursor: pointer;
   border: none;
   background-color: transparent;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 li {
@@ -31,6 +33,8 @@ li {
 a {
   all: unset;
   cursor: pointer;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 input,

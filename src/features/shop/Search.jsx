@@ -64,7 +64,7 @@ function Search() {
                   className="search-input"
                   name="search"
                   type="text"
-                  placeholder="Search"
+                  placeholder="Search..."
                   autoComplete="off"
                   value={searchQuery}
                 />
