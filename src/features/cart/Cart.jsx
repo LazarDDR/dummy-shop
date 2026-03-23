@@ -4,16 +4,20 @@ import {
   selectDiscountedTotal,
   selectTotalQuantity,
 } from "../../redux/selectors/cartSelectors";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { HiArrowLongLeft } from "react-icons/hi2";
 import { clearCart } from "../../redux/cartSlice";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 function Cart() {
+  const [shippingPrice, setShippingPrice] = useState(5);
   const dispatch = useDispatch();
   const products = useSelector((store) => store.cart.products);
+  const navigate = useNavigate();
   const totalQuantity = useSelector(selectTotalQuantity);
   const discountedTotal = useSelector(selectDiscountedTotal);
+  const totalPrice = discountedTotal + Number(shippingPrice);
 
   if (totalQuantity <= 0)
     return (
@@ -26,6 +30,12 @@ function Cart() {
     dispatch(clearCart());
 
     toast.success(<span>Cart Cleared</span>);
+  }
+
+  function handleCheckout() {
+    toast.success("Order placed successfully!");
+    dispatch(clearCart());
+    navigate("/");
   }
 
   return (
@@ -65,11 +75,35 @@ function Cart() {
         <div className="shipping-box">
           <p>SHIPPING</p>
 
-          <select name="shipping" id="">
-            <option value="standart">Standard-Delivery $ 5.00</option>
-            <option value="express">Express-Delivery $ 15.00</option>
+          <select
+            name="shipping"
+            id=""
+            value={shippingPrice}
+            onChange={(e) => setShippingPrice(e.target.value)}
+          >
+            <option value="5">Standard-Delivery $ 5.00</option>
+            <option value="15">Express-Delivery $ 15.00</option>
           </select>
         </div>
+
+        <div className="shipping-box">
+          <p>PROMO CODE</p>
+
+          <input className="promo-code-input" type="text" />
+        </div>
+
+        <div className="shipping-box">
+          <div className="items-price">
+            <p className="items-num">TOTAL PRICE</p>
+            <p className="items-total">$ {totalPrice}</p>
+          </div>
+
+          <p></p>
+        </div>
+
+        <button onClick={handleCheckout} className="checkout-btn">
+          CHECKOUT
+        </button>
       </div>
     </div>
   );
