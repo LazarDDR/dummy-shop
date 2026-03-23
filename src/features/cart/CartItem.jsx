@@ -3,8 +3,11 @@ import { decItemQty, incItemQty, removeCartItem } from "../../redux/cartSlice";
 import { HiMiniXMark, HiOutlineMinus, HiOutlinePlus } from "react-icons/hi2";
 import { Link } from "react-router";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import Spinner from "../../ui/Spinner";
 
 function CartItem({ product }) {
+  const [imgLoaded, setImgLoaded] = useState(false);
   const dispatch = useDispatch();
   const { thumbnail, title, discountPercentage, quantity, id, price } = product;
 
@@ -54,7 +57,8 @@ function CartItem({ product }) {
   return (
     <div className="cart-item">
       <Link to={`/product-details/${id}`} className="cart-img-box">
-        <img src={thumbnail} alt="" />
+        {!imgLoaded && <Spinner />}
+        <img onLoad={() => setImgLoaded(true)} src={thumbnail} alt="" />
       </Link>
       <Link to={`/product-details/${id}`} className="cart-item-title">
         {title}

@@ -3,12 +3,16 @@ import { createPortal } from "react-dom";
 import { HiChevronLeft, HiChevronRight, HiMiniXCircle } from "react-icons/hi2";
 import { useOutsideClick } from "../hooks/useOutsideClick";
 import Spinner from "../../ui/Spinner";
+import ProductGalleryImage from "./ProductGalleryImage";
 
 function ProductGalleryModal({ images, handleCloseGallery }) {
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [imgLoaded, setImgLoaded] = useState(false);
   const ref = useOutsideClick(handleCloseGallery);
   const numImages = images.length;
+  const [allImgLoaded, setAllImgLoaded] = useState(
+    Array.from({ length: numImages }, () => false) || null,
+  );
 
   function handleSelectImage(index) {
     setMainImageIndex(index);
@@ -49,7 +53,7 @@ function ProductGalleryModal({ images, handleCloseGallery }) {
         {numImages > 1 && (
           <div className="modal-thumbnails-box">
             {images.map((image, i) => (
-              <img
+              <ProductGalleryImage
                 onClick={() => handleSelectImage(i)}
                 className={`modal-thumbnail ${
                   mainImageIndex === i ? "selected-image" : ""

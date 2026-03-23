@@ -725,6 +725,12 @@ button:disabled {
   height: auto;
 }
 
+.modal-img-box {
+  position: relative;
+  aspect-ratio: 1/1;
+  /* width: 100%; */
+}
+
 .modal-thumbnails-box {
   width: 100%;
   flex: 1;
@@ -872,10 +878,11 @@ button:disabled {
 
 .cart-img-box {
   max-width: 8rem;
+  aspect-ratio: 1/1;
+  position: relative;
 }
 
 .cart-img-box img {
-  /* width: 80%; */
   max-height: 8rem;
   height: 100%;
   aspect-ratio: 1/1;
