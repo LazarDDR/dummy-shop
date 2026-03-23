@@ -902,6 +902,7 @@ button:disabled {
   /* gap: 1rem; */
   padding: 1rem;
   font-size: 1.8rem;
+  flex: 0 0 auto;
 }
 
 .cart-qty-inputs {
@@ -934,6 +935,7 @@ button:disabled {
   font-size: 1.8rem;
   font-weight: 800;
   white-space: nowrap;
+  padding-left: 2rem;
 }
 
 .cart-icon {
