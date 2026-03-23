@@ -1127,10 +1127,6 @@ button:disabled {
     color: #eceef8;
   }
 
-  .cart-header {
-    padding: 2rem;
-  }
-
   .cart-items-box {
     padding: 1rem;
   }
@@ -1162,6 +1158,10 @@ button:disabled {
   .user-cart-container {
     gap: 0.5rem;
     /* max-width: 102rem; */
+  }
+
+  .cart-header {
+    padding: 3rem;
   }
 
   .cart-qty-inputs {
