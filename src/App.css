@@ -42,6 +42,15 @@ grays: #1c1917
   top: 0;
 }
 
+.small-loader {
+  width: 20px;
+  height: 20px;
+  border: 2px dotted;
+  animation-duration: 3s;
+  border-radius: 50%;
+  border-color: #eceef8;
+}
+
 .app {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -83,6 +92,7 @@ grays: #1c1917
 }
 
 .login-btn {
+  position: relative;
   background-color: #333333;
   font-size: 1.7rem;
   height: 4rem;
@@ -498,10 +508,6 @@ main {
   width: 4rem;
   height: 4rem;
   border-radius: 6px;
-}
-
-button:disabled {
-  cursor: default;
 }
 
 .pagination-btn--active {

@@ -14,8 +14,6 @@ function LoginForm() {
     login({ username, password });
   }
 
-  if (isLoggingIn) return <Spinner />;
-
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={(e) => handleLogin(e)}>
@@ -32,6 +30,7 @@ function LoginForm() {
             name="username"
             placeholder="Enter your username"
             required
+            disabled={isLoggingIn}
           />
         </div>
 
@@ -46,11 +45,12 @@ function LoginForm() {
             name="password"
             placeholder="Enter your password"
             required
+            disabled={isLoggingIn}
           />
         </div>
 
         <button disabled={isLoggingIn} type="submit" className="login-btn">
-          Log in
+          {isLoggingIn ? <Spinner small={true} /> : "Log in"}
         </button>
       </form>
     </div>

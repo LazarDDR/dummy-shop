@@ -1,7 +1,7 @@
-function Spinner() {
+function Spinner({ small }) {
   return (
     <div className="spinner-box">
-      <span className="loader"></span>;
+      <span className={`loader ${small ? "small-loader" : " "}`}></span>
     </div>
   );
 }

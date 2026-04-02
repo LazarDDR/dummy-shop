@@ -9,14 +9,14 @@ export function useLogin() {
 
   const {
     mutate: login,
-    isLoading: isLoggingIn,
+    isPending: isLoggingIn,
     error,
   } = useMutation({
     mutationFn: ({ username, password }) => loginApi({ username, password }),
     onSuccess: (data) => {
       queryClient.setQueryData(["user"], data);
       navigate("/", { replace: true });
-      toast.success("Signed in successfully");
+      toast.success("Logged in successfully");
     },
     onError: (err) => {
       console.log(err);
