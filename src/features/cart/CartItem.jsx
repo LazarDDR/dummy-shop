@@ -83,7 +83,10 @@ function CartItem({ product }) {
       </div>
 
       <div className="cart-price-box">
-        <p className="cart-item-price">$ {discountedTotal}</p>
+        <p className="cart-item-price">
+          <span className="currency">$</span>{" "}
+          <span className="amount">{discountedTotal}</span>
+        </p>
       </div>
 
       <div>
