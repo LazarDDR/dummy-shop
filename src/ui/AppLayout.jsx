@@ -9,10 +9,10 @@ import { useCurrentUser } from "../features/authentication/useCurrentUser";
 import { useEffect } from "react";
 import { setCart, setCartId } from "../redux/cartSlice";
 import { useIsLargeDesktop } from "../features/hooks/useIsLargeDesktop";
-import { showCategoriesMenu } from "../redux/shopSlice";
 
 function AppLayout() {
   const isLargeDesktop = useIsLargeDesktop();
+
   const { showCategories } = useSelector((store) => store.shop);
   const { cartId } = useSelector((store) => store.cart);
 
@@ -23,17 +23,19 @@ function AppLayout() {
   const { userCart, isLoading, isSuccess } = useUserCart(currentUser?.id);
 
   useEffect(() => {
-    if (isSuccess && userCart.id !== cartId) {
+    if (isSuccess && userCart?.id !== cartId) {
       dispatch(setCart({ products: userCart.products }));
       dispatch(setCartId(userCart.id));
     }
   }, [isSuccess, userCart, dispatch, cartId]);
 
-  useEffect(() => {
-    if (isLargeDesktop) dispatch(showCategoriesMenu());
-  }, [dispatch, isLargeDesktop]);
-
   if (isUserLoading || isLoading) return null;
+
+  console.log(isLargeDesktop, showCategories);
+
+  const showCategoriesFinal = isLargeDesktop || showCategories;
+
+  console.log(showCategoriesFinal);
 
   return (
     <div className="app">
@@ -41,10 +43,17 @@ function AppLayout() {
 
       <main className="main">
         <AnimatePresence mode="wait">
-          {showCategories && <CategoriesMenu key="categories-menu" />}
+          {showCategoriesFinal && (
+            <CategoriesMenu
+              showCategoriesFinal={showCategoriesFinal}
+              key="categories-menu"
+            />
+          )}
         </AnimatePresence>
+
         <Outlet />
       </main>
+
       <Footer />
     </div>
   );

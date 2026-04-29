@@ -8,7 +8,7 @@ import { motion } from "motion/react"; // eslint-disable-line no-unused-vars
 import { useOutsideClick } from "../hooks/useOutsideClick";
 import { useIsLargeDesktop } from "../hooks/useIsLargeDesktop";
 
-function CategoriesMenu() {
+function CategoriesMenu({ showCategoriesFinal }) {
   const { categories, isLoading } = useCategoriesList();
   const isLargeDesktop = useIsLargeDesktop();
   const dispatch = useDispatch();
@@ -54,7 +54,7 @@ function CategoriesMenu() {
           </>
         )}
       </motion.ul>
-      {!isLargeDesktop && (
+      {showCategoriesFinal && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
