@@ -1,0 +1,184 @@
+type Category = {
+  slug: string;
+  name: string;
+  url: string;
+};
+
+export async function getCategoriesList(): Promise<Category[]> {
+  const res = await fetch("https://dummyjson.com/products/categories");
+
+  if (!res.ok) throw new Error(`Failed to fetch data: ${res.status}`);
+
+  const data: Category[] = await res.json();
+
+  return data;
+}
+
+type GetAllProductsParams = {
+  category: string | null;
+  page: number;
+  limit: number;
+};
+
+type Product = {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  tags: string[];
+  brand: string;
+  sku: string;
+  weight: number;
+
+  dimensions: {
+    width: number;
+    height: number;
+    depth: number;
+  };
+
+  warrantyInformation: string;
+  shippingInformation: string;
+  availabilityStatus: string;
+
+  reviews: {
+    rating: number;
+    comment: string;
+    date: string;
+    reviewerName: string;
+    reviewerEmail: string;
+  }[];
+
+  returnPolicy: string;
+  minimumOrderQuantity: number;
+
+  meta: {
+    createdAt: string;
+    updatedAt: string;
+    barcode: string;
+    qrCode: string;
+  };
+
+  images: string[];
+  thumbnail: string;
+};
+
+type ProductsResponse = {
+  products: Product[];
+  total: number;
+  skip: number;
+  limit: number;
+};
+
+export async function getAllProducts({
+  category,
+  page,
+  limit,
+}: GetAllProductsParams): Promise<ProductsResponse> {
+  let URL = `https://dummyjson.com/products`;
+
+  const skip = page ? limit * (page - 1) : 0;
+
+  if (category) URL = `${URL}/category/${category}`;
+
+  URL = `${URL}?limit=${limit}`;
+
+  if (skip) URL = `${URL}&skip=${skip}`;
+
+  const res = await fetch(URL);
+
+  if (!res.ok) throw new Error(`Failed to fetch data: ${res.status}`);
+
+  const data: ProductsResponse = await res.json();
+
+  return data;
+}
+
+type SearchProductsParams = {
+  signal?: AbortSignal;
+  query: string;
+  page: number;
+  limit: number;
+};
+
+export async function searchProducts({
+  query,
+  signal,
+  page,
+  limit,
+}: SearchProductsParams): Promise<ProductsResponse | null> {
+  if (!query) return null;
+  let URL = `https://dummyjson.com/products/search?q=${query}`;
+
+  const skip = page ? limit * (page - 1) : 0;
+
+  URL = `${URL}&limit=${limit}`;
+
+  if (skip) URL = `${URL}&skip=${skip}`;
+
+  const res = await fetch(URL, { signal });
+
+  if (!res.ok) throw new Error(`Failed to fetch data: ${res.status}`);
+
+  const data: ProductsResponse = await res.json();
+
+  return data;
+}
+
+export async function getProduct(id: number): Promise<Product> {
+  const res = await fetch(`https://dummyjson.com/products/${id}`);
+
+  if (!res.ok) {
+    if (res.status === 404) {
+      throw new Error("Product not found.");
+    }
+    throw new Error("Failed to fetch product.");
+  }
+
+  const data: Product = await res.json();
+
+  return data;
+}
+
+/// cart
+
+type CartProduct = {
+  id: number;
+  title: string;
+  price: number;
+  quantity: number;
+  total: number;
+  discountPercentage: number;
+  discountedTotal: number;
+  thumbnail: string;
+};
+
+type Cart = {
+  id: number;
+  products: CartProduct[];
+  total: number;
+  discountedTotal: number;
+  userId: number;
+  totalProducts: number;
+  totalQuantity: number;
+};
+
+type UserCartsResponse = {
+  carts: Cart[];
+  total: number;
+  skip: number;
+  limit: number;
+};
+
+export async function getUserCart(id: number): Promise<UserCartsResponse> {
+  const res = await fetch(`https://dummyjson.com/carts/user/${id}`);
+
+  if (!res.ok) throw new Error(`Failed to fetch data: ${res.status}`);
+
+  const data: UserCartsResponse = await res.json();
+
+  return data;
+}

@@ -31,11 +31,7 @@ function AppLayout() {
 
   if (isUserLoading || isLoading) return null;
 
-  console.log(isLargeDesktop, showCategories);
-
   const showCategoriesFinal = isLargeDesktop || showCategories;
-
-  console.log(showCategoriesFinal);
 
   return (
     <div className="app">
