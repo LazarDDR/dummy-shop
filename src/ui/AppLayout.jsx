@@ -31,6 +31,8 @@ function AppLayout() {
 
   if (isUserLoading || isLoading) return null;
 
+  console.log(userCart);
+
   const showCategoriesFinal = isLargeDesktop || showCategories;
 
   return (
