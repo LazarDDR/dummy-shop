@@ -1,21 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { CartProduct } from "../services/apiDummyShop";
 
-const initialState = {
+export type CartState = {
+  products: CartProduct[];
+  cartId: number | null;
+};
+
+const initialState: CartState = {
   products: [],
-  cartId: "",
+  cartId: null,
 };
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    setCart(state, action) {
+    setCart(state, action: PayloadAction<CartProduct[]>) {
       state.products = action.payload;
     },
-    setCartId(state, action) {
+    setCartId(state, action: PayloadAction<number | null>) {
       state.cartId = action.payload;
     },
-    addToCart(state, action) {
+    addToCart(state, action: PayloadAction<CartProduct>) {
       const existingItem = state.products.find(
         (p) => p.id === action.payload.id,
       );
@@ -26,20 +32,24 @@ const cartSlice = createSlice({
         state.products.push(action.payload);
       }
     },
-    removeCartItem(state, action) {
+    removeCartItem(state, action: PayloadAction<number>) {
       state.products = state.products.filter(
         (product) => product.id !== action.payload,
       );
     },
-    incItemQty(state, action) {
+    incItemQty(state, action: PayloadAction<number>) {
       const product = state.products.find((p) => p.id === action.payload);
 
       if (product) product.quantity += 1;
     },
-    decItemQty(state, action) {
+    decItemQty(state, action: PayloadAction<number>) {
       const product = state.products.find((p) => p.id === action.payload);
 
-      if (product && product.quantity >= 0) product.quantity -= 1;
+      if (product && product.quantity > 1) {
+        product.quantity -= 1;
+      } else {
+        state.products = state.products.filter((p) => p.id !== action.payload);
+      }
     },
     clearCart(state) {
       state.products = [];

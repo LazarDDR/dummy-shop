@@ -19,7 +19,18 @@ function ProductItem({ product }) {
   const discountedPrice = getDiscountedPrice(price, discountPercentage);
 
   function handleAddToCart() {
-    dispatch(addToCart({ ...product, quantity: 1 }));
+    const productObj = {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: 1,
+      discountPercentage: product.discountPercentage,
+      thumbnail: product.thumbnail,
+    };
+
+    console.log(productObj, product);
+
+    dispatch(addToCart(productObj));
     toast.success(
       <span>
         1 × <strong>{title}</strong> added to cart

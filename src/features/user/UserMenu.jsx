@@ -12,7 +12,7 @@ import { useOutsideClick } from "../hooks/useOutsideClick";
 function UserMenu() {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const { currentUser, isLoading } = useCurrentUser();
-  const { logout, isPending } = useLogout();
+  const logout = useLogout();
 
   const fullName = currentUser
     ? `${currentUser.firstName} ${currentUser.lastName}`
@@ -28,7 +28,7 @@ function UserMenu() {
 
   const ref = useOutsideClick(() => setUserMenuOpen(false));
 
-  if (isLoading || isPending) return null;
+  if (isLoading) return null;
 
   return (
     <div ref={ref} className="user-box">

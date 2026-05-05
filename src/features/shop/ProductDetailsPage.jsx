@@ -85,7 +85,16 @@ function ProductDetailsPage() {
   }
 
   function handleAddToCart() {
-    dispatch(addToCart({ ...product, quantity }));
+    const productObj = {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: quantity,
+      discountPercentage: product.discountPercentage,
+      thumbnail: product.thumbnail,
+    };
+
+    dispatch(addToCart(productObj));
 
     toast.success(
       <span>

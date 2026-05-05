@@ -1,6 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
+export type ShopState = {
+  showCategories: boolean;
+  searchQuery: string;
+};
+
+const initialState: ShopState = {
   showCategories: false,
   searchQuery: "",
 };
@@ -18,7 +23,7 @@ const shopSlice = createSlice({
     hideCategoriesMenu(state) {
       state.showCategories = false;
     },
-    setSearchQuery(state, action) {
+    setSearchQuery(state, action: PayloadAction<string>) {
       state.searchQuery = action.payload;
     },
   },

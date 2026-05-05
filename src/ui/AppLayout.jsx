@@ -12,6 +12,7 @@ import { useIsLargeDesktop } from "../features/hooks/useIsLargeDesktop";
 
 function AppLayout() {
   const isLargeDesktop = useIsLargeDesktop();
+  const state = useSelector((store) => console.log(store));
 
   const { showCategories } = useSelector((store) => store.shop);
   const { cartId } = useSelector((store) => store.cart);
@@ -26,6 +27,7 @@ function AppLayout() {
     if (isSuccess && userCart?.id !== cartId) {
       dispatch(setCart(userCart.products));
       dispatch(setCartId(userCart.id));
+      console.log(userCart.id);
     }
   }, [isSuccess, userCart, dispatch, cartId]);
 

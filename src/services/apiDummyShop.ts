@@ -145,7 +145,7 @@ export async function getProduct(id: number): Promise<Product> {
 
 /// cart
 
-type CartProduct = {
+export type CartProduct = {
   id: number;
   title: string;
   price: number;
@@ -173,7 +173,7 @@ type UserCartsResponse = {
   limit: number;
 };
 
-export async function getUserCart(id: number): Promise<UserCartsResponse> {
+export async function getUserCart(id: number): Promise<Cart> {
   const res = await fetch(`https://dummyjson.com/carts/user/${id}`);
 
   if (!res.ok) throw new Error(`Failed to fetch data: ${res.status}`);
