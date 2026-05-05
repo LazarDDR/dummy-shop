@@ -24,14 +24,12 @@ function AppLayout() {
 
   useEffect(() => {
     if (isSuccess && userCart?.id !== cartId) {
-      dispatch(setCart({ products: userCart.products }));
+      dispatch(setCart(userCart.products));
       dispatch(setCartId(userCart.id));
     }
   }, [isSuccess, userCart, dispatch, cartId]);
 
   if (isUserLoading || isLoading) return null;
-
-  console.log(userCart);
 
   const showCategoriesFinal = isLargeDesktop || showCategories;
 

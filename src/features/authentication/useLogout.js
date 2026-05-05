@@ -16,7 +16,7 @@ export function useLogout() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["user"]);
-      dispatch(setCart({ products: [] }));
+      dispatch(setCart([]));
       dispatch(setCartId(""));
       toast.success("Successfully logged out");
     },

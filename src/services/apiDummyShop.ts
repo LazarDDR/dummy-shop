@@ -180,5 +180,7 @@ export async function getUserCart(id: number): Promise<UserCartsResponse> {
 
   const data: UserCartsResponse = await res.json();
 
-  return data;
+  const cart = data.carts[0];
+
+  return cart;
 }
