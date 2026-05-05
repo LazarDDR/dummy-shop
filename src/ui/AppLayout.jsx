@@ -12,7 +12,6 @@ import { useIsLargeDesktop } from "../features/hooks/useIsLargeDesktop";
 
 function AppLayout() {
   const isLargeDesktop = useIsLargeDesktop();
-  const state = useSelector((store) => console.log(store));
 
   const { showCategories } = useSelector((store) => store.shop);
   const { cartId } = useSelector((store) => store.cart);

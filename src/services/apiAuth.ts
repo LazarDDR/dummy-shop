@@ -2,7 +2,7 @@ const API_URL = "https://dummyjson.com";
 
 // LOGIN
 
-type Login = {
+export type Login = {
   username: string;
   password: string;
 };
