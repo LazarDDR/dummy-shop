@@ -3,26 +3,27 @@ import { setSearchQuery } from "../../redux/shopSlice";
 import { useQueryClient } from "@tanstack/react-query";
 import { useLocation, useNavigate, useSearchParams } from "react-router";
 import { HiMagnifyingGlass, HiOutlineXMark } from "react-icons/hi2";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react"; // eslint-disable-line no-unused-vars
 import { useIsMobile } from "../hooks/useIsMobile";
+import { RootState } from "../../redux/store";
 
 function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get("page");
-  const searchQuery = useSelector((store) => store.shop.searchQuery);
+  const searchQuery = useSelector((store: RootState) => store.shop.searchQuery);
   const isMobile = useIsMobile();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
   const location = useLocation();
   const navigate = useNavigate();
 
-  function handleOnChange(e) {
+  function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
     if (page !== "1") {
-      searchParams.set("page", 1);
+      searchParams.set("page", "1");
       setSearchParams(searchParams);
     }
 
@@ -37,6 +38,7 @@ function Search() {
   }
 
   function handleOpenSearch() {
+    if (!isMobile) return;
     setIsSearchOpen(true);
   }
 
@@ -47,7 +49,7 @@ function Search() {
   return (
     <div className="search-box">
       <HiMagnifyingGlass
-        onClick={isMobile ? handleOpenSearch : null}
+        onClick={handleOpenSearch}
         className="header-icon header-icon-search"
       />
 

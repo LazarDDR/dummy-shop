@@ -4,10 +4,10 @@ import "./index.css";
 import App from "./App.js";
 
 import { Provider } from "react-redux";
-import store, { persistor } from "./redux/store.js";
+import store, { persistor } from "./redux/store.ts";
 import { PersistGate } from "redux-persist/integration/react";
 import { ErrorBoundary } from "react-error-boundary";
-import ErrorFallback from "./ui/ErrorFallback.jsx";
+import ErrorFallback from "./ui/ErrorFallback.tsx";
 
 const root = document.getElementById("root");
 

@@ -8,10 +8,11 @@ import CartLink from "../features/cart/CartLink";
 import logo from "../assets/logo/dummy-shop-high-resolution-logo-transparent.png";
 import { useIsLargeDesktop } from "../features/hooks/useIsLargeDesktop";
 import { useEffect } from "react";
+import { RootState } from "../redux/store";
 
 function Header() {
   const dispatch = useDispatch();
-  const { showCategories } = useSelector((store) => store.shop);
+  const { showCategories } = useSelector((store: RootState) => store.shop);
   const isLargeDesktop = useIsLargeDesktop();
 
   function handleToggleCategories() {

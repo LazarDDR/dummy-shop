@@ -1,8 +1,13 @@
 import { useDispatch } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router";
 import { setSearchQuery } from "../../redux/shopSlice";
+import { Category } from "../../services/apiDummyShop";
 
-function CategoryItem({ category }) {
+type CategoryItemProps = {
+  category: Category;
+};
+
+function CategoryItem({ category }: CategoryItemProps) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -11,7 +16,7 @@ function CategoryItem({ category }) {
 
   function handleSetCategory() {
     searchParams.set("category", slug);
-    searchParams.set("page", 1);
+    searchParams.set("page", "1");
     setSearchParams(searchParams);
     dispatch(setSearchQuery(""));
 

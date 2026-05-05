@@ -4,16 +4,20 @@ import { useCategoriesList } from "./useCategoriesList";
 import { useDispatch } from "react-redux";
 import { setSearchQuery, toggleCategoriesMenu } from "../../redux/shopSlice";
 import { useNavigate, useSearchParams } from "react-router";
-import { motion } from "motion/react"; // eslint-disable-line no-unused-vars
+import { motion } from "motion/react";
 import { useOutsideClick } from "../hooks/useOutsideClick";
 import { useIsLargeDesktop } from "../hooks/useIsLargeDesktop";
 
-function CategoriesMenu({ showCategoriesFinal }) {
+type CategoriesMenuProps = {
+  showCategoriesFinal: boolean;
+};
+
+function CategoriesMenu({ showCategoriesFinal }: CategoriesMenuProps) {
   const { categories, isLoading } = useCategoriesList();
   const isLargeDesktop = useIsLargeDesktop();
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-  const outsideRef = useOutsideClick(() => {
+  const outsideRef = useOutsideClick<HTMLUListElement>(() => {
     if (!isLargeDesktop) dispatch(toggleCategoriesMenu());
   });
 
@@ -27,6 +31,8 @@ function CategoriesMenu({ showCategoriesFinal }) {
 
     navigate("/");
   }
+
+  if (isLoading) return null;
 
   return (
     <>
@@ -48,9 +54,10 @@ function CategoriesMenu({ showCategoriesFinal }) {
             <button className="category-item-button all-products-button">
               <li onClick={handleAllProductsCat}>All products</li>
             </button>
-            {categories.map((category) => (
-              <CategoryItem category={category} key={category.slug} />
-            ))}
+            {categories &&
+              categories.map((category) => (
+                <CategoryItem category={category} key={category.slug} />
+              ))}
           </>
         )}
       </motion.ul>
