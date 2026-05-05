@@ -145,42 +145,59 @@ export async function getProduct(id: number): Promise<Product> {
 
 /// cart
 
-export type CartProduct = {
+export type CartProductAPI = {
   id: number;
   title: string;
   price: number;
   quantity: number;
   total: number;
-  discountPercentage: number;
   discountedTotal: number;
+  discountPercentage: number;
   thumbnail: string;
 };
 
-type Cart = {
+export type CartProduct = Omit<CartProductAPI, "total" | "discountedTotal">;
+
+export type CartProductPayload = CartProduct;
+
+export type Cart = {
   id: number;
   products: CartProduct[];
-  total: number;
-  discountedTotal: number;
   userId: number;
   totalProducts: number;
   totalQuantity: number;
 };
 
 type UserCartsResponse = {
-  carts: Cart[];
-  total: number;
-  skip: number;
-  limit: number;
+  carts: {
+    id: number;
+    products: CartProductAPI[];
+    userId: number;
+    totalProducts: number;
+    totalQuantity: number;
+  }[];
 };
 
 export async function getUserCart(id: number): Promise<Cart> {
   const res = await fetch(`https://dummyjson.com/carts/user/${id}`);
 
-  if (!res.ok) throw new Error(`Failed to fetch data: ${res.status}`);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch data: ${res.status}`);
+  }
 
   const data: UserCartsResponse = await res.json();
 
-  const cart = data.carts[0];
+  const rawCart = data.carts[0];
 
-  return cart;
+  const products: CartProduct[] = rawCart.products.map(
+    ({ total, discountedTotal, ...rest }) => rest,
+  );
+
+  return {
+    id: rawCart.id,
+    userId: rawCart.userId,
+    totalProducts: rawCart.totalProducts,
+    totalQuantity: rawCart.totalQuantity,
+    products,
+  };
 }

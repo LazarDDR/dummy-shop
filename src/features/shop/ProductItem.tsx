@@ -16,7 +16,6 @@ type ProductItemProps = {
 };
 
 function ProductItem({ product }: ProductItemProps) {
-  console.log(product);
   const [imgLoaded, setImgLoaded] = useState(false);
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
@@ -33,8 +32,6 @@ function ProductItem({ product }: ProductItemProps) {
       discountPercentage: product.discountPercentage,
       thumbnail: product.thumbnail,
     };
-
-    console.log(productObj, product);
 
     dispatch(addToCart(productObj));
     toast.success(
