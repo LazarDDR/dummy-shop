@@ -1,4 +1,4 @@
-import { motion } from "motion/react"; // eslint-disable-line no-unused-vars
+import { motion } from "motion/react";
 import { Link } from "react-router";
 import { addToCart } from "../../redux/cartSlice";
 import { useQueryClient } from "@tanstack/react-query";
