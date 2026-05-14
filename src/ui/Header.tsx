@@ -24,23 +24,23 @@ function Header() {
   }, [isLargeDesktop, dispatch]);
 
   return (
-    <header className="header">
-      <div className="header-container">
+    <header className="bg-slate-700! text-white! px-12 py-18">
+      <div className="relative! flex! justify-between! items-center!">
         <div className="menu-search-container">
           {!isLargeDesktop && (
             <button onClick={handleToggleCategories}>
               {showCategories ? (
-                <HiOutlineXMark className="header-icon" />
+                <HiOutlineXMark className="w-15! h-15!" />
               ) : (
-                <HiOutlineBars3 className="header-icon" />
+                <HiOutlineBars3 className="w-15! h-15!" />
               )}
             </button>
           )}
 
           <Search />
         </div>
-        <Link to="/" className="header-logo-box">
-          <img className="header-logo" src={logo} alt="" />
+        <Link to="/" className="absolute! left-1/2! -translate-x-1/2!">
+          <img className="w-90! h-auto!" src={logo} alt="" />
         </Link>
         <div className="user-cart-container">
           <UserMenu />

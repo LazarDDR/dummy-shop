@@ -56,7 +56,7 @@ function UserMenu() {
         </>
       ) : (
         <Link to="/login" className="user-btn">
-          <HiMiniUserCircle className="header-icon" />
+          <HiMiniUserCircle className="w-15! h-15!" />
           <p className="login-text">Log in</p>
         </Link>
       )}

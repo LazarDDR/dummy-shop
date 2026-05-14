@@ -39,7 +39,7 @@ function AppLayout() {
   const showCategoriesFinal = isLargeDesktop || showCategories;
 
   return (
-    <div className="app">
+    <div className="grid grid-rows-[auto_1fr_auto]">
       <Header />
 
       <main className="main">

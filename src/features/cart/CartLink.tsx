@@ -8,7 +8,7 @@ function CartLink() {
 
   return (
     <Link to="/cart" className="cart-link">
-      <HiOutlineShoppingCart className="header-icon" />
+      <HiOutlineShoppingCart className="w-15! h-15!" />
       {totalQuantity > 0 && <span className="cart-badge">{totalQuantity}</span>}
     </Link>
   );
