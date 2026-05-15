@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import Spinner from "../ui/Spinner";
 import ProductItem from "../features/shop/ProductItem";
+import ProductItemSkeleton from "../features/shop/ProductItemSkeleton";
 import { useAllProducts } from "../features/shop/useAllProducts";
 import { useSearchProducts } from "../features/shop/useSearchProducts";
 import { useSearchParams } from "react-router";
@@ -32,8 +32,12 @@ function ShopPage() {
 
   if (isLoading || isLoadingSearch) {
     return (
-      <div className="spinner-shop-box">
-        <Spinner />
+      <div className="px-4 py-6 sm:px-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+          {Array.from({ length: limit }).map((_, i) => (
+            <ProductItemSkeleton key={i} />
+          ))}
+        </div>
       </div>
     );
   }

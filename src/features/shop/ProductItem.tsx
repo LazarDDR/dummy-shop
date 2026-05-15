@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { addToCart } from "../../redux/cartSlice";
 import { useQueryClient } from "@tanstack/react-query";
 import { getProduct } from "../../services/apiDummyShop";
-import { getDiscountedPrice } from "../../utils/helpers";
+import { getDiscountedPrice, formatPrice } from "../../utils/helpers";
 import { useState } from "react";
 import Spinner from "../../ui/Spinner";
 import toast from "react-hot-toast";
@@ -58,7 +58,7 @@ function ProductItem({ product }: ProductItemProps) {
       animate={{ opacity: 1, x: 0 }}
       whileHover={{ scale: 1.01 }}
       transition={{ duration: 0.1, type: "tween", stiffness: 300 }}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-shadow duration-200 hover:shadow-md"
     >
       <Link
         onMouseEnter={handleMouseEnter}
@@ -82,21 +82,21 @@ function ProductItem({ product }: ProductItemProps) {
           />
         </div>
 
-        <div className="flex flex-col gap-1 px-4 pb-2 pt-3">
-          <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+        <div className="flex flex-1 flex-col gap-1 px-4 pb-2 pt-3">
+          <p className="h-4 overflow-hidden text-xs font-medium uppercase tracking-wide text-slate-400">
             {brand}
           </p>
-          <p className="line-clamp-2 text-sm font-medium leading-snug text-slate-800">
+          <p className="line-clamp-2 h-10 text-sm font-medium leading-snug text-slate-800">
             {title}
           </p>
-          <div className="flex items-center gap-2">
-            <p className="text-base font-semibold text-slate-700">
-              ${discountedPrice}
+          <div className="mt-auto flex min-w-0 items-center gap-2 pt-1">
+            <p className="min-w-0 flex-1 truncate text-base font-semibold text-slate-700">
+              ${formatPrice(discountedPrice)}
             </p>
-            <span className="text-xs text-slate-400 line-through">
-              ${price}
+            <span className="shrink-0 text-xs text-slate-400 line-through">
+              ${formatPrice(price)}
             </span>
-            <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-xs font-medium text-emerald-700">
+            <span className="shrink-0 rounded bg-emerald-100 px-1.5 py-0.5 text-xs font-medium text-emerald-700">
               -{Math.round(discountPercentage)}%
             </span>
           </div>

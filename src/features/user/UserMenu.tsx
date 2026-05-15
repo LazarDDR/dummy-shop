@@ -2,6 +2,8 @@ import {
   HiMiniChevronDown,
   HiMiniChevronUp,
   HiMiniUserCircle,
+  HiArrowRightOnRectangle,
+  HiUser,
 } from "react-icons/hi2";
 import { Link } from "react-router";
 import { useCurrentUser } from "../authentication/useCurrentUser";
@@ -36,16 +38,16 @@ function UserMenu() {
         <>
           <button
             onClick={handleUserMenu}
-            className="flex items-center gap-1.5 rounded-lg p-1 hover:bg-white/10 transition-colors"
+            className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-white/10 transition-all duration-200"
           >
             <img
-              className="w-7 h-7 rounded-full object-cover ring-2 ring-white/20"
+              className="w-7 h-7 rounded-full object-cover ring-2 ring-white/30"
               src={currentUser.image}
               alt=""
             />
-            <p className="hidden" data-first={currentUser.firstName}>
-              {fullName}
-            </p>
+            <span className="hidden sm:block text-sm font-medium text-white">
+              {currentUser.firstName}
+            </span>
             {userMenuOpen ? (
               <HiMiniChevronUp className="w-3.5 h-3.5 text-slate-300" />
             ) : (
@@ -54,33 +56,53 @@ function UserMenu() {
           </button>
 
           {userMenuOpen && (
-            <ul className="absolute right-0 top-full mt-2 w-40 rounded-xl border border-slate-100 bg-white py-1 shadow-lg">
-              <li>
-                <Link
-                  to="/user"
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
-                >
-                  Profile
-                </Link>
-              </li>
-              <li>
-                <button
-                  onClick={handleLogout}
-                  className="w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
-                >
-                  Logout
-                </button>
-              </li>
-            </ul>
+            <div className="absolute z-50 right-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white shadow-xl shadow-slate-900/10 overflow-hidden">
+              <div className="flex items-center gap-3 px-4 py-3 border-b border-slate-100">
+                <img
+                  className="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100 shrink-0"
+                  src={currentUser.image}
+                  alt=""
+                />
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-slate-800 truncate">
+                    {fullName}
+                  </p>
+                  <p className="text-xs text-slate-400 truncate">
+                    {currentUser.email}
+                  </p>
+                </div>
+              </div>
+
+              <ul className="py-1">
+                <li>
+                  <Link
+                    to="/user"
+                    className="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                  >
+                    <HiUser className="w-4 h-4 text-slate-400 shrink-0" />
+                    Profile
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                  >
+                    <HiArrowRightOnRectangle className="w-4 h-4 text-slate-400 shrink-0" />
+                    Sign out
+                  </button>
+                </li>
+              </ul>
+            </div>
           )}
         </>
       ) : (
         <Link
           to="/login"
-          className="flex items-center p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium text-white hover:bg-white/10 transition-all duration-200"
         >
-          <HiMiniUserCircle className="w-6 h-6" />
-          <p className="hidden">Log in</p>
+          <HiMiniUserCircle className="w-5 h-5 shrink-0" />
+          <span className="hidden sm:block">Sign in</span>
         </Link>
       )}
     </div>
