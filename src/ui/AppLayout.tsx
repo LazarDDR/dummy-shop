@@ -39,10 +39,10 @@ function AppLayout() {
   const showCategoriesFinal = isLargeDesktop || showCategories;
 
   return (
-    <div className="grid grid-rows-[auto_1fr_auto]">
+    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen">
       <Header />
 
-      <main className="main">
+      <main className="relative flex">
         <AnimatePresence mode="wait">
           {showCategoriesFinal && (
             <CategoriesMenu
@@ -52,7 +52,9 @@ function AppLayout() {
           )}
         </AnimatePresence>
 
-        <Outlet />
+        <div className="flex-1 min-w-0">
+          <Outlet />
+        </div>
       </main>
 
       <Footer />

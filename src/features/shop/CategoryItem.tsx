@@ -14,6 +14,8 @@ function CategoryItem({ category }: CategoryItemProps) {
   const { name, slug } = category;
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const isActive = searchParams.get("category") === slug;
+
   function handleSetCategory() {
     searchParams.set("category", slug);
     searchParams.set("page", "1");
@@ -27,7 +29,12 @@ function CategoryItem({ category }: CategoryItemProps) {
     <li>
       <button
         onClick={handleSetCategory}
-        className="text-slate-700 text-sm px-6 py-1 tracking-widest font-medium w-full text-left uppercase"
+        className={[
+          "w-full text-left text-sm px-3 py-2 rounded-md transition-colors duration-150",
+          isActive
+            ? "bg-slate-100 text-slate-900 font-semibold"
+            : "text-slate-600 hover:bg-slate-50 hover:text-slate-900",
+        ].join(" ")}
       >
         {name}
       </button>

@@ -7,10 +7,13 @@ function CartLink() {
   const totalQuantity = useAppSelector(selectTotalQuantity);
 
   return (
-    <Link to="/cart" className="cart-link">
-      <HiOutlineShoppingCart className="w-7! h-7!" />
+    <Link
+      to="/cart"
+      className="relative flex items-center p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+    >
+      <HiOutlineShoppingCart className="w-5 h-5" />
       {totalQuantity > 0 && (
-        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+        <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-semibold text-white">
           {totalQuantity}
         </span>
       )}
