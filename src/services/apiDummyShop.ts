@@ -143,8 +143,6 @@ export async function getProduct(id: number): Promise<Product> {
   return data;
 }
 
-/// cart
-
 export type CartProductAPI = {
   id: number;
   title: string;

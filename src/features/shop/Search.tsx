@@ -3,7 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useLocation, useNavigate, useSearchParams } from "react-router";
 import { HiMagnifyingGlass, HiOutlineXMark } from "react-icons/hi2";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "motion/react"; // eslint-disable-line no-unused-vars
+import { motion, AnimatePresence } from "motion/react";
 import { useBreakpoint } from "../hooks/useBreakpoint";
 import { useAppSelector } from "../hooks/useAppSelector";
 import { useAppDispatch } from "../hooks/useAppDispatch";
@@ -51,7 +51,7 @@ function Search() {
       {!md && (
         <button
           onClick={handleOpenSearch}
-          className="p-1.5 rounded-lg text-white hover:bg-white/10 transition-colors"
+          className="cursor-pointer p-1.5 rounded-lg text-white hover:bg-white/10 transition-colors"
         >
           <HiMagnifyingGlass className="w-5 h-5" />
         </button>
@@ -82,14 +82,14 @@ function Search() {
               {searchQuery && (
                 <button
                   onClick={handleClearSearchQuery}
-                  className="shrink-0 text-xs font-medium text-slate-300 hover:text-white transition-colors"
+                  className="cursor-pointer shrink-0 text-xs font-medium text-slate-300 hover:text-white transition-colors"
                 >
                   Clear
                 </button>
               )}
               <button
                 onClick={() => setIsSearchOpen(false)}
-                className="shrink-0 p-1 text-slate-300 hover:text-white transition-colors"
+                className="cursor-pointer shrink-0 p-1 text-slate-300 hover:text-white transition-colors"
               >
                 <HiOutlineXMark className="w-5 h-5" />
               </button>
@@ -114,7 +114,7 @@ function Search() {
           {searchQuery && (
             <button
               onClick={handleClearSearchQuery}
-              className="absolute right-2.5 p-0.5 text-slate-400 hover:text-white transition-colors"
+              className="cursor-pointer absolute right-2.5 p-0.5 text-slate-400 hover:text-white transition-colors"
             >
               <HiOutlineXMark className="w-4 h-4" />
             </button>

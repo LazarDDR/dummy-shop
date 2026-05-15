@@ -19,20 +19,17 @@ function CartItems() {
 
   return (
     <div className="flex flex-col rounded-2xl border border-slate-100 bg-white shadow-sm">
-      {/* Header */}
       <div className="flex items-baseline justify-between border-b border-slate-100 px-6 py-5">
         <h1 className="text-xl font-semibold text-slate-800">Shopping Cart</h1>
         <span className="text-sm text-slate-400">{totalQuantity} items</span>
       </div>
 
-      {/* Items */}
       <div className="divide-y divide-slate-100 px-4">
         {products.map((product) => (
           <CartItem product={product} key={product.id} />
         ))}
       </div>
 
-      {/* Footer */}
       <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
         <Link
           to="/"

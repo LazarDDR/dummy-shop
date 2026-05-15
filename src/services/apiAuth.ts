@@ -1,7 +1,5 @@
 const API_URL = "https://dummyjson.com";
 
-// LOGIN
-
 export type Login = {
   username: string;
   password: string;
@@ -47,13 +45,10 @@ export async function login({
   return data;
 }
 
-// LOGOUT
 export function logout() {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("refreshToken");
 }
-
-// GET CURRENT USER
 
 type Hair = {
   color: string;

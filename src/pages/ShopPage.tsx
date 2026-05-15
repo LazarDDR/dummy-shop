@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import ProductItem from "../features/shop/ProductItem";
 import ProductItemSkeleton from "../features/shop/ProductItemSkeleton";
 import { useAllProducts } from "../features/shop/useAllProducts";
@@ -6,7 +5,6 @@ import { useSearchProducts } from "../features/shop/useSearchProducts";
 import { useSearchParams } from "react-router";
 import Pagination from "../ui/Pagination";
 import { useBreakpoint } from "../features/hooks/useBreakpoint";
-import { RootState } from "../redux/store";
 import { useAppSelector } from "../features/hooks/useAppSelector";
 
 function ShopPage() {
@@ -45,7 +43,7 @@ function ShopPage() {
   if (isError) {
     const errorMessage =
       error?.message || "An error occurred while loading products.";
-    return <p className="error-message">{errorMessage}</p>;
+    return <p className="py-10 text-center text-sm text-red-500">{errorMessage}</p>;
   }
 
   const currentData = query ? searchedProducts : data;
@@ -61,7 +59,7 @@ function ShopPage() {
             <ProductItem product={product} key={product.id} />
           ))
         ) : (
-          <p className="no-results">No products match your search.</p>
+          <p className="col-span-full py-10 text-center text-sm text-slate-400">No products match your search.</p>
         )}
       </div>
       {numPages > 1 && <Pagination numPages={numPages} />}

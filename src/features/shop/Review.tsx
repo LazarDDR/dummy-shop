@@ -30,7 +30,6 @@ function Review({ review }: ReviewParams) {
 
   return (
     <div className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition-shadow duration-200 hover:shadow-md">
-      {/* Header: avatar + name/date + stars */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-xs font-semibold text-slate-600">
@@ -46,7 +45,6 @@ function Review({ review }: ReviewParams) {
         <RatingStars rating={rating} ratingNum={false} />
       </div>
 
-      {/* Comment */}
       <p className="text-sm leading-relaxed text-slate-600">{comment}</p>
     </div>
   );

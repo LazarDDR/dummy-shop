@@ -6,7 +6,7 @@ type HeadingProps = {
 
 function Heading({ children, ...props }: HeadingProps) {
   return (
-    <h1 className="heading" {...props}>
+    <h1 className="text-2xl font-semibold text-slate-800" {...props}>
       {children}
     </h1>
   );

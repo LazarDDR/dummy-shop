@@ -40,7 +40,6 @@ function ProductGalleryModal({
           ref={ref}
           className="relative my-4 flex w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
         >
-          {/* Close button */}
           <button
             onClick={handleCloseGallery}
             className="absolute right-3 top-3 z-10 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/90 text-slate-500 shadow-sm backdrop-blur-sm transition-colors hover:bg-slate-100 hover:text-slate-800"
@@ -48,7 +47,6 @@ function ProductGalleryModal({
             <HiXMark className="h-4 w-4" />
           </button>
 
-          {/* Main image */}
           <div className="relative aspect-square w-full overflow-hidden bg-slate-50">
             {numImages > 1 && (
               <>
@@ -84,7 +82,6 @@ function ProductGalleryModal({
             />
           </div>
 
-          {/* Thumbnails */}
           {numImages > 1 && (
             <div className="flex gap-2 overflow-x-auto border-t border-slate-100 p-3">
               {images.map((image, i) => (

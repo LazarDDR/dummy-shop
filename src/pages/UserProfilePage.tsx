@@ -49,10 +49,7 @@ function UserProfilePage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
-
-      {/* ── Hero header ───────────────────────────────────────────── */}
       <div className="mb-6 overflow-hidden rounded-2xl shadow-sm">
-        {/* Solid-color banner with avatar + identity text on top */}
         <div className="bg-slate-700 px-6 py-6">
           <div className="flex flex-wrap items-center gap-5">
             <div className="shrink-0">
@@ -85,7 +82,6 @@ function UserProfilePage() {
           </div>
         </div>
 
-        {/* Contact row on white strip below */}
         <div className="flex flex-wrap gap-4 border border-t-0 border-slate-100 bg-white px-6 py-4 text-sm text-slate-600 rounded-b-2xl">
           {email && (
             <span className="flex items-center gap-1.5">
@@ -102,10 +98,7 @@ function UserProfilePage() {
         </div>
       </div>
 
-      {/* ── Info grid ─────────────────────────────────────────────── */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-
-        {/* Personal Details */}
         <ProfileCard icon={<HiUser className="h-4 w-4" />} title="Personal Details">
           <InfoRow label="Age" value={age} />
           <InfoRow
@@ -122,7 +115,6 @@ function UserProfilePage() {
           )}
         </ProfileCard>
 
-        {/* Address */}
         {address && (
           <ProfileCard icon={<HiMapPin className="h-4 w-4" />} title="Home Address">
             <InfoRow label="Street" value={address.address} />
@@ -139,7 +131,6 @@ function UserProfilePage() {
           </ProfileCard>
         )}
 
-        {/* Work */}
         {company && (
           <ProfileCard icon={<HiBriefcase className="h-4 w-4" />} title="Work">
             <InfoRow label="Company" value={company.name} />
@@ -154,7 +145,6 @@ function UserProfilePage() {
           </ProfileCard>
         )}
 
-        {/* Education */}
         {university && (
           <ProfileCard
             icon={<HiAcademicCap className="h-4 w-4" />}
@@ -164,7 +154,6 @@ function UserProfilePage() {
           </ProfileCard>
         )}
 
-        {/* Banking */}
         {bank && (
           <ProfileCard
             icon={<HiCreditCard className="h-4 w-4" />}
@@ -177,7 +166,6 @@ function UserProfilePage() {
           </ProfileCard>
         )}
 
-        {/* Crypto */}
         {crypto && (
           <ProfileCard
             icon={<HiCurrencyDollar className="h-4 w-4" />}
@@ -195,13 +183,10 @@ function UserProfilePage() {
             />
           </ProfileCard>
         )}
-
       </div>
     </div>
   );
 }
-
-// ── Internal helpers ───────────────────────────────────────────────────────────
 
 type ProfileCardProps = {
   icon: React.ReactNode;

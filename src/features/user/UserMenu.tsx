@@ -36,7 +36,7 @@ function UserMenu() {
         <>
           <button
             onClick={handleUserMenu}
-            className="flex items-center gap-2 rounded-full pl-0.5 pr-3 py-0.5 hover:bg-white/10 transition-all duration-200 max-w-[160px] sm:max-w-[200px]"
+            className="cursor-pointer flex items-center gap-2 rounded-full pl-0.5 pr-3 py-0.5 hover:bg-white/10 transition-all duration-200 max-w-[160px] sm:max-w-[200px]"
           >
             <img
               className="w-7 h-7 rounded-full object-cover shrink-0 ring-2 ring-white/30"
@@ -79,7 +79,7 @@ function UserMenu() {
                 <li>
                   <button
                     onClick={handleLogout}
-                    className="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="cursor-pointer flex items-center gap-2.5 w-full px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
                   >
                     <HiArrowRightOnRectangle className="w-4 h-4 text-slate-400 shrink-0" />
                     Sign out

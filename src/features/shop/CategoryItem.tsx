@@ -30,7 +30,7 @@ function CategoryItem({ category }: CategoryItemProps) {
       <button
         onClick={handleSetCategory}
         className={[
-          "w-full text-left text-sm px-3 py-2 rounded-md transition-colors duration-150",
+          "cursor-pointer w-full text-left text-sm px-3 py-2 rounded-md transition-colors duration-150",
           isActive
             ? "bg-slate-100 text-slate-900 font-semibold"
             : "text-slate-600 hover:bg-slate-50 hover:text-slate-900",

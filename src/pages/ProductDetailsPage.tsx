@@ -131,11 +131,7 @@ function ProductDetailsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-
-      {/* ── Hero: image + primary info ─────────────────────────── */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
-
-        {/* Image */}
         <button
           onClick={handleOpenGallery}
           className="group relative aspect-square w-full cursor-pointer overflow-hidden rounded-2xl border border-slate-100 bg-slate-50 shadow-sm transition-shadow duration-200 hover:shadow-md"
@@ -163,10 +159,7 @@ function ProductDetailsPage() {
           )}
         </button>
 
-        {/* Primary info */}
         <div className="flex flex-col gap-4">
-
-          {/* Brand + category */}
           <div className="flex flex-wrap items-center gap-2">
             {brand && (
               <span className="text-xs font-medium uppercase tracking-widest text-slate-400">
@@ -183,12 +176,10 @@ function ProductDetailsPage() {
             )}
           </div>
 
-          {/* Title */}
           <h1 className="text-2xl font-semibold leading-snug text-slate-800 sm:text-3xl">
             {title}
           </h1>
 
-          {/* Rating */}
           <div className="flex items-center gap-2">
             <RatingStars rating={rating} />
             {reviews.length > 0 && (
@@ -198,7 +189,6 @@ function ProductDetailsPage() {
             )}
           </div>
 
-          {/* Price */}
           <div className="flex items-baseline gap-3">
             <span className="text-2xl font-semibold text-slate-700">
               ${formatPrice(discountedPrice)}
@@ -211,10 +201,8 @@ function ProductDetailsPage() {
             </span>
           </div>
 
-          {/* Description */}
           <p className="text-sm leading-relaxed text-slate-600">{description}</p>
 
-          {/* Tags */}
           {tags.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
               {tags.map((tag, i) => (
@@ -228,7 +216,6 @@ function ProductDetailsPage() {
             </div>
           )}
 
-          {/* Availability */}
           <div className="flex items-center gap-2">
             <span className={`text-sm font-medium ${availabilityColor}`}>
               {availabilityStatus}
@@ -236,7 +223,6 @@ function ProductDetailsPage() {
             <span className="text-xs text-slate-400">· {stock} units</span>
           </div>
 
-          {/* Qty + Add to cart */}
           <div className="flex items-center gap-3">
             <div className="flex items-center overflow-hidden rounded-xl border border-slate-200">
               <button
@@ -268,7 +254,6 @@ function ProductDetailsPage() {
             </Button>
           </div>
 
-          {/* SKU */}
           {sku && (
             <div className="border-t border-slate-100 pt-3">
               <p className="text-xs text-slate-400">
@@ -279,7 +264,6 @@ function ProductDetailsPage() {
         </div>
       </div>
 
-      {/* ── Product details grid ────────────────────────────────── */}
       <div className="mt-10 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
         <h2 className="mb-5 text-base font-semibold text-slate-800">
           Product Details

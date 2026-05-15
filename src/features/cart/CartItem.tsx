@@ -16,8 +16,6 @@ function CartItem({ product }: CartItemProps) {
   const dispatch = useAppDispatch();
   const { thumbnail, title, discountPercentage, quantity, id, price } = product;
 
-  console.log(product);
-
   const discountedTotal = Number(
     (price * quantity * (1 - discountPercentage / 100)).toFixed(2),
   );
@@ -60,7 +58,6 @@ function CartItem({ product }: CartItemProps) {
 
   return (
     <div className="flex items-center gap-3 py-4 sm:gap-4">
-      {/* Thumbnail */}
       <Link
         to={`/product-details/${id}`}
         className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-slate-100 bg-slate-50 sm:h-16 sm:w-16"
@@ -83,7 +80,6 @@ function CartItem({ product }: CartItemProps) {
         />
       </Link>
 
-      {/* Title */}
       <Link
         to={`/product-details/${id}`}
         className="min-w-0 flex-1 text-sm font-medium leading-snug text-slate-800 transition-colors hover:text-slate-500 line-clamp-2"
@@ -91,9 +87,7 @@ function CartItem({ product }: CartItemProps) {
         {title}
       </Link>
 
-      {/* Controls: qty + price + remove */}
       <div className="flex shrink-0 items-center gap-3">
-        {/* Qty stepper */}
         <div className="flex items-center overflow-hidden rounded-lg border border-slate-200">
           <button
             onClick={handleDecQty}
@@ -116,12 +110,10 @@ function CartItem({ product }: CartItemProps) {
           </button>
         </div>
 
-        {/* Price */}
         <p className="w-16 text-left text-sm font-semibold text-slate-700 sm:w-20">
           ${discountedTotal}
         </p>
 
-        {/* Remove */}
         <button
           onClick={handleRemoveCartItem}
           className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full text-slate-300 transition-colors hover:bg-red-50 hover:text-red-400 sm:ml-4"

@@ -4,7 +4,7 @@ import { hideCategoriesMenu, toggleCategoriesMenu } from "../redux/shopSlice";
 import Search from "../features/shop/Search";
 import UserMenu from "../features/user/UserMenu";
 import CartLink from "../features/cart/CartLink";
-import logo from "../assets/logo/dummy-shop-high-resolution-logo-transparent.png";
+import Logo from "./Logo";
 import { useBreakpoint } from "../features/hooks/useBreakpoint";
 import { useEffect } from "react";
 import { useAppSelector } from "../features/hooks/useAppSelector";
@@ -30,7 +30,7 @@ function Header() {
           {!isLargeDesktop && (
             <button
               onClick={handleToggleCategories}
-              className="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+              className="cursor-pointer p-1.5 rounded-lg hover:bg-white/10 transition-colors"
             >
               {showCategories ? (
                 <HiOutlineXMark className="w-5 h-5" />
@@ -44,7 +44,7 @@ function Header() {
         </div>
 
         <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-          <img className="h-10 w-auto" src={logo} alt="Dummy Shop" />
+          <Logo />
         </Link>
 
         <div className="flex items-center gap-3">

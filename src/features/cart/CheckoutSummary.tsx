@@ -1,6 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch } from "../hooks/useAppDispatch";
+import { useAppSelector } from "../hooks/useAppSelector";
 import { clearCart, setCartId } from "../../redux/cartSlice";
 import { useNavigate } from "react-router";
 import Button from "../../ui/Button";
@@ -23,9 +24,9 @@ type CheckoutSummaryProps = {
 function CheckoutSummary({ discountedTotal }: CheckoutSummaryProps) {
   const [shippingPrice, setShippingPrice] = useState(5);
   const [promoCode, setPromoCode] = useState("");
-  const totalQuantity = useSelector(selectTotalQuantity);
+  const totalQuantity = useAppSelector(selectTotalQuantity);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const totalPrice = discountedTotal + shippingPrice;
 
@@ -51,7 +52,6 @@ function CheckoutSummary({ discountedTotal }: CheckoutSummaryProps) {
         value={formatPrice(discountedTotal)}
       />
 
-      {/* Shipping */}
       <div className="flex flex-col gap-1.5">
         <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
           Shipping
@@ -69,7 +69,6 @@ function CheckoutSummary({ discountedTotal }: CheckoutSummaryProps) {
         </select>
       </div>
 
-      {/* Promo code */}
       <div className="flex flex-col gap-1.5">
         <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
           Promo Code

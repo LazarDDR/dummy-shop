@@ -4,7 +4,7 @@ import {
   FaFacebook,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import logo from "../assets/logo/dummy-shop-high-resolution-logo-transparent.png";
+import Logo from "./Logo";
 
 const footerLinks = [
   {
@@ -36,17 +36,9 @@ function Footer() {
   return (
     <footer className="bg-slate-700 text-slate-300">
       <div className="max-w-7xl mx-auto px-5 pt-14 pb-8">
-
-        {/* Top section */}
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-6 pb-10 border-b border-slate-600">
-
-          {/* Brand */}
           <div className="lg:col-span-2 flex flex-col gap-4">
-            <img
-              src={logo}
-              alt="Dummy Shop"
-              className="h-10 w-auto self-start"
-            />
+            <Logo />
             <p className="text-sm leading-relaxed text-slate-400 max-w-xs">
               Your go-to destination for quality products at unbeatable prices.
               Shop thousands of items, delivered fast.
@@ -56,7 +48,7 @@ function Footer() {
                 <button
                   key={label}
                   aria-label={label}
-                  className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+                  className="cursor-pointer p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
                 >
                   <Icon className="w-4 h-4" />
                 </button>
@@ -64,7 +56,6 @@ function Footer() {
             </div>
           </div>
 
-          {/* Nav columns */}
           {footerLinks.map(({ heading, links }) => (
             <div key={heading} className="flex flex-col gap-3">
               <h3 className="text-xs font-semibold uppercase tracking-widest text-slate-400">
@@ -86,7 +77,6 @@ function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 text-xs text-slate-500">
           <span>© 2026 Dummy Shop. All rights reserved.</span>
           <div className="flex items-center gap-4">
@@ -101,7 +91,6 @@ function Footer() {
             ))}
           </div>
         </div>
-
       </div>
     </footer>
   );

@@ -24,7 +24,6 @@ function LoginFormPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left branding panel — hidden on mobile */}
       <div className="hidden lg:flex lg:w-1/2 flex-col justify-between bg-slate-800 px-14 py-12 text-white">
         <div className="text-lg font-semibold tracking-tight">
           Dummy<span className="text-slate-400">Shop</span>
@@ -45,15 +44,12 @@ function LoginFormPage() {
         </p>
       </div>
 
-      {/* Right form panel */}
       <div className="flex flex-1 flex-col items-center justify-center bg-slate-50 px-6 py-12">
-        {/* Brand mark — mobile only */}
         <div className="lg:hidden mb-10 text-lg font-semibold tracking-tight text-slate-800">
           Dummy<span className="text-slate-400">Shop</span>
         </div>
 
         <div className="w-full max-w-sm">
-          {/* Heading */}
           <div className="mb-8">
             <h1 className="text-2xl font-bold text-slate-800 tracking-tight">
               Welcome back
@@ -64,7 +60,6 @@ function LoginFormPage() {
           </div>
 
           <form onSubmit={handleLogin} className="space-y-5">
-            {/* Error banner */}
             {error && (
               <div className="flex items-center gap-2.5 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
                 <svg
@@ -86,7 +81,6 @@ function LoginFormPage() {
               </div>
             )}
 
-            {/* Username field */}
             <div className="space-y-1.5">
               <label
                 htmlFor="username"
@@ -107,7 +101,6 @@ function LoginFormPage() {
               />
             </div>
 
-            {/* Password field */}
             <div className="space-y-1.5">
               <label
                 htmlFor="password"
@@ -128,11 +121,10 @@ function LoginFormPage() {
               />
             </div>
 
-            {/* Submit button */}
             <button
               disabled={isLoggingIn}
               type="submit"
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-slate-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-slate-800 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+              className="cursor-pointer flex w-full items-center justify-center gap-2 rounded-lg bg-slate-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-slate-800 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isLoggingIn ? (
                 <>
