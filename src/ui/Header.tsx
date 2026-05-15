@@ -5,7 +5,7 @@ import Search from "../features/shop/Search";
 import UserMenu from "../features/user/UserMenu";
 import CartLink from "../features/cart/CartLink";
 import logo from "../assets/logo/dummy-shop-high-resolution-logo-transparent.png";
-import { useIsLargeDesktop } from "../features/hooks/useIsLargeDesktop";
+import { useBreakpoint } from "../features/hooks/useBreakpoint";
 import { useEffect } from "react";
 import { useAppSelector } from "../features/hooks/useAppSelector";
 import { useAppDispatch } from "../features/hooks/useAppDispatch";
@@ -13,7 +13,7 @@ import { useAppDispatch } from "../features/hooks/useAppDispatch";
 function Header() {
   const dispatch = useAppDispatch();
   const { showCategories } = useAppSelector((store) => store.shop);
-  const isLargeDesktop = useIsLargeDesktop();
+  const { "3xl": isLargeDesktop } = useBreakpoint();
 
   function handleToggleCategories() {
     dispatch(toggleCategoriesMenu());

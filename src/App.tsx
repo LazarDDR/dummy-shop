@@ -8,7 +8,7 @@ import ProductDetailsPage from "./features/shop/ProductDetailsPage";
 import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./features/user/ProtectedRoute";
 import PageNotFound from "./ui/PageNotFound";
-import { useIsMobile } from "./features/hooks/useIsMobile";
+import { useBreakpoint } from "./features/hooks/useBreakpoint";
 import UserProfilePage from "./pages/UserProfilePage";
 import ShopPage from "./pages/ShopPage";
 import LoginFormPage from "./pages/LoginFormPage";
@@ -23,7 +23,7 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  const isMobile = useIsMobile();
+  const { md } = useBreakpoint();
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -53,7 +53,7 @@ function App() {
       </BrowserRouter>
 
       <Toaster
-        position={isMobile ? "bottom-center" : "bottom-right"}
+        position={!md ? "bottom-center" : "bottom-right"}
         gutter={12}
         containerStyle={{ margin: "8px" }}
         toastOptions={{

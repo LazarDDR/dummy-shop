@@ -7,7 +7,7 @@ import {
 } from "react-icons/hi2";
 import { useSearchParams } from "react-router";
 import PaginationBtn from "./PaginationBtn";
-import { useIsMobile } from "../features/hooks/useIsMobile";
+import { useBreakpoint } from "../features/hooks/useBreakpoint";
 
 type PaginationProps = {
   numPages: number;
@@ -16,7 +16,7 @@ type PaginationProps = {
 function Pagination({ numPages }: PaginationProps) {
   const [searchParams, setSearchParams] = useSearchParams({ page: "1" });
   const currentPage = Number(searchParams.get("page")) || 1;
-  const isMobile = useIsMobile();
+  const { md } = useBreakpoint();
 
   function handlePageChange(newPage: string) {
     setSearchParams((prev) => {
@@ -43,7 +43,7 @@ function Pagination({ numPages }: PaginationProps) {
   }
 
   const pageNumbers = [];
-  const maxVisible = isMobile ? 5 : 7;
+  const maxVisible = !md ? 5 : 7;
   let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
   let endPage = startPage + maxVisible - 1;
 
@@ -57,16 +57,20 @@ function Pagination({ numPages }: PaginationProps) {
   }
 
   return (
-    <div className="pagination-container">
+    <div className="flex items-center justify-center gap-0.5 py-8">
       <PaginationBtn onClick={handleFirstPage} disabled={currentPage === 1}>
-        <HiChevronDoubleLeft />
+        <HiChevronDoubleLeft className="w-4 h-4" />
       </PaginationBtn>
 
       <PaginationBtn onClick={handlePrevPage} disabled={currentPage === 1}>
-        <HiChevronLeft />
+        <HiChevronLeft className="w-4 h-4" />
       </PaginationBtn>
 
-      {startPage > 1 && <HiEllipsisHorizontal className="pagination-dots" />}
+      {startPage > 1 && (
+        <span className="inline-flex items-center justify-center w-9 h-9 text-slate-400">
+          <HiEllipsisHorizontal className="w-5 h-5" />
+        </span>
+      )}
 
       {pageNumbers.map((page) => (
         <PaginationBtn
@@ -79,21 +83,23 @@ function Pagination({ numPages }: PaginationProps) {
       ))}
 
       {endPage < numPages && (
-        <HiEllipsisHorizontal className="pagination-dots" />
+        <span className="inline-flex items-center justify-center w-9 h-9 text-slate-400">
+          <HiEllipsisHorizontal className="w-5 h-5" />
+        </span>
       )}
 
       <PaginationBtn
         onClick={handleNextPage}
         disabled={currentPage === numPages}
       >
-        <HiChevronRight />
+        <HiChevronRight className="w-4 h-4" />
       </PaginationBtn>
 
       <PaginationBtn
         onClick={handleLastPage}
         disabled={currentPage === numPages}
       >
-        <HiChevronDoubleRight />
+        <HiChevronDoubleRight className="w-4 h-4" />
       </PaginationBtn>
     </div>
   );

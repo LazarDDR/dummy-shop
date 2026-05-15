@@ -4,7 +4,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router";
 import { HiMagnifyingGlass, HiOutlineXMark } from "react-icons/hi2";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react"; // eslint-disable-line no-unused-vars
-import { useIsMobile } from "../hooks/useIsMobile";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 import { useAppSelector } from "../hooks/useAppSelector";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 
@@ -12,7 +12,7 @@ function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get("page");
   const searchQuery = useAppSelector((store) => store.shop.searchQuery);
-  const isMobile = useIsMobile();
+  const { md } = useBreakpoint();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -38,7 +38,7 @@ function Search() {
   }
 
   function handleOpenSearch() {
-    if (!isMobile) return;
+    if (md) return;
     setIsSearchOpen(true);
   }
 
@@ -50,7 +50,7 @@ function Search() {
     <div className="">
       <HiMagnifyingGlass onClick={handleOpenSearch} className="w-7! h-7!" />
 
-      {isMobile ? (
+      {!md ? (
         <AnimatePresence mode="wait">
           {isSearchOpen && (
             <motion.div

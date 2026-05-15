@@ -19,9 +19,8 @@ function ProductItem({ product }: ProductItemProps) {
   const [imgLoaded, setImgLoaded] = useState(false);
   const dispatch = useAppDispatch();
   const queryClient = useQueryClient();
-  const { title, price, id, thumbnail, discountPercentage, rating, brand } = product;
-
-  console.log(product);
+  const { title, price, id, thumbnail, discountPercentage, rating, brand } =
+    product;
 
   const discountedPrice = getDiscountedPrice(price, discountPercentage);
 
@@ -94,7 +93,9 @@ function ProductItem({ product }: ProductItemProps) {
             <p className="text-base font-semibold text-slate-700">
               ${discountedPrice}
             </p>
-            <span className="text-xs text-slate-400 line-through">${price}</span>
+            <span className="text-xs text-slate-400 line-through">
+              ${price}
+            </span>
             <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-xs font-medium text-emerald-700">
               -{Math.round(discountPercentage)}%
             </span>

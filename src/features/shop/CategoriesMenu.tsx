@@ -5,7 +5,7 @@ import { setSearchQuery, toggleCategoriesMenu } from "../../redux/shopSlice";
 import { useNavigate, useSearchParams } from "react-router";
 import { motion } from "motion/react";
 import { useOutsideClick } from "../hooks/useOutsideClick";
-import { useIsLargeDesktop } from "../hooks/useIsLargeDesktop";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 
 type CategoriesMenuProps = {
@@ -14,7 +14,7 @@ type CategoriesMenuProps = {
 
 function CategoriesMenu({ showCategoriesFinal }: CategoriesMenuProps) {
   const { categories, isLoading } = useCategoriesList();
-  const isLargeDesktop = useIsLargeDesktop();
+  const { "3xl": isLargeDesktop } = useBreakpoint();
   const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const outsideRef = useOutsideClick<HTMLUListElement>(() => {

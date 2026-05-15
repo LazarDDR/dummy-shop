@@ -5,7 +5,7 @@ import { useAllProducts } from "../features/shop/useAllProducts";
 import { useSearchProducts } from "../features/shop/useSearchProducts";
 import { useSearchParams } from "react-router";
 import Pagination from "../ui/Pagination";
-import { useIsMobile } from "../features/hooks/useIsMobile";
+import { useBreakpoint } from "../features/hooks/useBreakpoint";
 import { RootState } from "../redux/store";
 import { useAppSelector } from "../features/hooks/useAppSelector";
 
@@ -16,8 +16,8 @@ function ShopPage() {
   const page = Number(searchParams.get("page")) || 1;
   const query = useAppSelector((store) => store.shop.searchQuery);
 
-  const isMobile = useIsMobile();
-  const limit = isMobile ? 9 : 8;
+  const { sm, lg } = useBreakpoint();
+  const limit = lg ? 12 : sm ? 9 : 8;
 
   const { data, isLoading, isError, error } = useAllProducts({
     category,
@@ -60,7 +60,7 @@ function ShopPage() {
           <p className="no-results">No products match your search.</p>
         )}
       </div>
-      {/* {numPages > 1 && <Pagination numPages={numPages} />} */}
+      {numPages > 1 && <Pagination numPages={numPages} />}
     </div>
   );
 }

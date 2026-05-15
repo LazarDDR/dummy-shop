@@ -7,12 +7,12 @@ import { useUserCart } from "../features/cart/useUserCart";
 import { useCurrentUser } from "../features/authentication/useCurrentUser";
 import { useEffect } from "react";
 import { setCart, setCartId } from "../redux/cartSlice";
-import { useIsLargeDesktop } from "../features/hooks/useIsLargeDesktop";
+import { useBreakpoint } from "../features/hooks/useBreakpoint";
 import { useAppSelector } from "../features/hooks/useAppSelector";
 import { useAppDispatch } from "../features/hooks/useAppDispatch";
 
 function AppLayout() {
-  const isLargeDesktop = useIsLargeDesktop();
+  const { "3xl": isLargeDesktop } = useBreakpoint();
 
   const { showCategories } = useAppSelector((store) => store.shop);
   const { cartId } = useAppSelector((store) => store.cart);
