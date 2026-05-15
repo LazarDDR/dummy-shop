@@ -47,11 +47,8 @@ function Search() {
   }, [isSearchOpen]);
 
   return (
-    <div className="search-box">
-      <HiMagnifyingGlass
-        onClick={handleOpenSearch}
-        className="header-icon header-icon-search"
-      />
+    <div className="">
+      <HiMagnifyingGlass onClick={handleOpenSearch} className="w-7! h-7!" />
 
       {isMobile ? (
         <AnimatePresence mode="wait">
@@ -64,7 +61,7 @@ function Search() {
               className="search-popup-box"
             >
               <div>
-                <HiMagnifyingGlass className="header-icon header-icon-search" />
+                <HiMagnifyingGlass className="w-7! h-7!" />
                 <input
                   ref={inputRef}
                   onFocus={handleClearSearchQuery}

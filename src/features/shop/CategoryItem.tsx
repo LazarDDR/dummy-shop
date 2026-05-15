@@ -25,7 +25,10 @@ function CategoryItem({ category }: CategoryItemProps) {
 
   return (
     <li>
-      <button onClick={handleSetCategory} className="category-item-button">
+      <button
+        onClick={handleSetCategory}
+        className="text-slate-700 text-sm px-6 py-1 tracking-widest font-medium w-full text-left uppercase"
+      >
         {name}
       </button>
     </li>

@@ -19,7 +19,9 @@ function ProductItem({ product }: ProductItemProps) {
   const [imgLoaded, setImgLoaded] = useState(false);
   const dispatch = useAppDispatch();
   const queryClient = useQueryClient();
-  const { title, price, id, thumbnail, discountPercentage } = product;
+  const { title, price, id, thumbnail, discountPercentage, rating, brand } = product;
+
+  console.log(product);
 
   const discountedPrice = getDiscountedPrice(price, discountPercentage);
 
@@ -57,34 +59,58 @@ function ProductItem({ product }: ProductItemProps) {
       animate={{ opacity: 1, x: 0 }}
       whileHover={{ scale: 1.01 }}
       transition={{ duration: 0.1, type: "tween", stiffness: 300 }}
-      className="product-container"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm"
     >
       <Link
         onMouseEnter={handleMouseEnter}
-        className="product-link"
+        className="flex flex-col flex-1"
         to={`/product-details/${id}`}
       >
-        <div className="product-img-box">
-          {!imgLoaded && <Spinner />}
-
+        <div className="relative aspect-square overflow-hidden bg-slate-50">
+          {!imgLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Spinner small />
+            </div>
+          )}
           <motion.img
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, type: "tween" }}
-            className="product-img"
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
             src={thumbnail}
             alt=""
             onLoad={() => setImgLoaded(true)}
           />
         </div>
 
-        <p className="product-title ">{title}</p>
-        <p className="product-price ">${discountedPrice}</p>
+        <div className="flex flex-col gap-1 px-4 pb-2 pt-3">
+          <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+            {brand}
+          </p>
+          <p className="line-clamp-2 text-sm font-medium leading-snug text-slate-800">
+            {title}
+          </p>
+          <div className="flex items-center gap-2">
+            <p className="text-base font-semibold text-slate-700">
+              ${discountedPrice}
+            </p>
+            <span className="text-xs text-slate-400 line-through">${price}</span>
+            <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-xs font-medium text-emerald-700">
+              -{Math.round(discountPercentage)}%
+            </span>
+          </div>
+          <p className="text-xs text-slate-500">★ {rating.toFixed(1)}</p>
+        </div>
       </Link>
 
-      <Button onClick={handleAddToCart} className="button--sm no-border-radius">
-        Add to cart
-      </Button>
+      <div className="px-4 pb-4 pt-1">
+        <Button
+          onClick={handleAddToCart}
+          className="w-full cursor-pointer rounded-xl bg-slate-700 py-2.5 text-sm font-medium text-white transition-colors duration-150 hover:bg-slate-800 active:bg-slate-900"
+        >
+          Add to cart
+        </Button>
+      </div>
     </motion.div>
   );
 }

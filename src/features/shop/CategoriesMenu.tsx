@@ -41,7 +41,7 @@ function CategoriesMenu({ showCategoriesFinal }: CategoriesMenuProps) {
         animate={{ opacity: 1, x: 0 }}
         exit={{ x: "-100%" }}
         transition={{ duration: 0.2, type: "tween" }}
-        className="categories-menu"
+        className="flex! flex-col! divide-y! divide-slate-300! bg-slate-200! z-2! h-full py-3! absolute left-0"
         key="categories-menu"
         ref={ref}
       >
@@ -51,9 +51,12 @@ function CategoriesMenu({ showCategoriesFinal }: CategoriesMenuProps) {
           </div>
         ) : (
           <>
-            <button className="category-item-button all-products-button">
-              <li onClick={handleAllProductsCat}>All products</li>
-            </button>
+            <li onClick={handleAllProductsCat}>
+              <button className="text-slate-700 text-sm py-0.5 px-6 w-full text-left font-bold tracking-widest uppercase">
+                All products
+              </button>
+            </li>
+
             {categories &&
               categories.map((category) => (
                 <CategoryItem category={category} key={category.slug} />

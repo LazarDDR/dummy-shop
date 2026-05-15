@@ -35,13 +35,10 @@ function UserMenu() {
       {currentUser ? (
         <>
           <button className="user-menu-btn" onClick={handleUserMenu}>
-            <img className="user-img" src={currentUser.image} alt="" />
-            <p data-first={currentUser.firstName}>{fullName}</p>
-            {userMenuOpen ? (
-              <HiMiniChevronUp className="header-icon" />
-            ) : (
-              <HiMiniChevronDown className="header-icon" />
-            )}
+            <img className="w-7! h-7!" src={currentUser.image} alt="" />
+            <p className="hidden" data-first={currentUser.firstName}>
+              {fullName}
+            </p>
           </button>
           {userMenuOpen && (
             <ul className="user-menu">
@@ -55,9 +52,9 @@ function UserMenu() {
           )}
         </>
       ) : (
-        <Link to="/login" className="user-btn">
-          <HiMiniUserCircle className="w-15! h-15!" />
-          <p className="login-text">Log in</p>
+        <Link to="/login" className="">
+          <HiMiniUserCircle className="w-7! h-7!" />
+          <p className="hidden!">Log in</p>
         </Link>
       )}
     </div>

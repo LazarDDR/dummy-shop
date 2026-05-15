@@ -24,15 +24,15 @@ function Header() {
   }, [isLargeDesktop, dispatch]);
 
   return (
-    <header className="bg-slate-700! text-white! px-12 py-18">
+    <header className="bg-slate-700! text-white! px-5 py-7">
       <div className="relative! flex! justify-between! items-center!">
-        <div className="menu-search-container">
+        <div className="flex gap-4 items-center justify-center">
           {!isLargeDesktop && (
             <button onClick={handleToggleCategories}>
               {showCategories ? (
-                <HiOutlineXMark className="w-15! h-15!" />
+                <HiOutlineXMark className="w-7! h-7!" />
               ) : (
-                <HiOutlineBars3 className="w-15! h-15!" />
+                <HiOutlineBars3 className="w-7! h-7!" />
               )}
             </button>
           )}
@@ -40,9 +40,9 @@ function Header() {
           <Search />
         </div>
         <Link to="/" className="absolute! left-1/2! -translate-x-1/2!">
-          <img className="w-90! h-auto!" src={logo} alt="" />
+          <img className="w-40! h-auto!" src={logo} alt="" />
         </Link>
-        <div className="user-cart-container">
+        <div className="flex items-center justify-center gap-4">
           <UserMenu />
           <CartLink />
         </div>

@@ -50,8 +50,8 @@ function ShopPage() {
   const numPages = Math.ceil(total / limit);
 
   return (
-    <div className="shop-container">
-      <div className="products-container">
+    <div className="px-4 py-6 sm:px-6">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
         {products.length > 0 ? (
           products.map((product) => (
             <ProductItem product={product} key={product.id} />
@@ -60,7 +60,7 @@ function ShopPage() {
           <p className="no-results">No products match your search.</p>
         )}
       </div>
-      {numPages > 1 && <Pagination numPages={numPages} />}
+      {/* {numPages > 1 && <Pagination numPages={numPages} />} */}
     </div>
   );
 }
