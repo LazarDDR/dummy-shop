@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useBreakpoint } from "../hooks/useBreakpoint";
 import { useAppSelector } from "../hooks/useAppSelector";
 import { useAppDispatch } from "../hooks/useAppDispatch";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,6 +16,7 @@ function Search() {
   const { md } = useBreakpoint();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const ref = useOutsideClick<HTMLDivElement>(() => setIsSearchOpen(false));
 
   const dispatch = useAppDispatch();
   const queryClient = useQueryClient();
@@ -61,6 +63,7 @@ function Search() {
         <AnimatePresence mode="wait">
           {isSearchOpen && (
             <motion.div
+              ref={ref}
               initial={{ opacity: 0, y: "-100%" }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: "-100%" }}
