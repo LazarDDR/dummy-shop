@@ -16,8 +16,6 @@ function CartItem({ product }: CartItemProps) {
   const dispatch = useAppDispatch();
   const { thumbnail, title, discountPercentage, quantity, id, price } = product;
 
-  console.log(product);
-
   const discountedTotal = Number(
     (price * quantity * (1 - discountPercentage / 100)).toFixed(2),
   );
