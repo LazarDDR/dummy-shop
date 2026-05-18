@@ -7,8 +7,7 @@ const inputBase =
 const inputNormal =
   "border-slate-200 hover:border-slate-300 focus:border-slate-600 focus:ring-slate-600/20";
 
-const inputError =
-  "border-red-300 focus:border-red-400 focus:ring-red-400/20";
+const inputError = "border-red-300 focus:border-red-400 focus:ring-red-400/20";
 
 function LoginFormPage() {
   const [username, setUsername] = useState("liamg");
@@ -31,7 +30,8 @@ function LoginFormPage() {
 
         <div>
           <p className="text-3xl font-semibold leading-snug text-white">
-            "Thousands of products,<br />
+            "Thousands of products,
+            <br />
             one seamless checkout."
           </p>
           <p className="mt-4 text-sm text-slate-400">

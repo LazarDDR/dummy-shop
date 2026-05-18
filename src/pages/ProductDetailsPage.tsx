@@ -28,9 +28,24 @@ function ProductDetailsPage() {
   if (isLoading)
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <svg className="w-7 h-7 animate-spin text-slate-300" fill="none" viewBox="0 0 24 24">
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+        <svg
+          className="w-7 h-7 animate-spin text-slate-300"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="3"
+          />
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+          />
         </svg>
       </div>
     );
@@ -138,9 +153,24 @@ function ProductDetailsPage() {
         >
           {!imgLoaded && (
             <div className="absolute inset-0 flex items-center justify-center">
-              <svg className="w-7 h-7 animate-spin text-slate-300" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+              <svg
+                className="w-7 h-7 animate-spin text-slate-300"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                />
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                />
               </svg>
             </div>
           )}
@@ -152,6 +182,11 @@ function ProductDetailsPage() {
             alt={title}
             onLoad={() => setImgLoaded(true)}
           />
+          {availabilityStatus === "Low Stock" && (
+            <span className="absolute top-3 left-3 rounded-md bg-amber-500/90 px-2 py-0.5 text-xs font-medium text-white">
+              Low Stock
+            </span>
+          )}
           {imgLoaded && (
             <span className="absolute bottom-3 right-3 rounded-lg bg-white/80 px-2.5 py-1 text-xs font-medium text-slate-500 shadow-sm backdrop-blur-sm">
               View gallery
@@ -201,7 +236,9 @@ function ProductDetailsPage() {
             </span>
           </div>
 
-          <p className="text-sm leading-relaxed text-slate-600">{description}</p>
+          <p className="text-sm leading-relaxed text-slate-600">
+            {description}
+          </p>
 
           {tags.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
@@ -220,7 +257,9 @@ function ProductDetailsPage() {
             <span className={`text-sm font-medium ${availabilityColor}`}>
               {availabilityStatus}
             </span>
-            <span className="text-xs text-slate-400">· {stock} units</span>
+            <span className="text-xs translate-y-[1.4px] text-slate-400">
+              · {stock} units
+            </span>
           </div>
 
           <div className="flex items-center gap-3">
@@ -275,12 +314,8 @@ function ProductDetailsPage() {
           {warrantyInformation && (
             <DetailRow label="Warranty" value={warrantyInformation} />
           )}
-          {returnPolicy && (
-            <DetailRow label="Returns" value={returnPolicy} />
-          )}
-          {weight > 0 && (
-            <DetailRow label="Weight" value={`${weight} g`} />
-          )}
+          {returnPolicy && <DetailRow label="Returns" value={returnPolicy} />}
+          {weight > 0 && <DetailRow label="Weight" value={`${weight} g`} />}
           {dimensions && (
             <DetailRow
               label="Dimensions"

@@ -26,7 +26,7 @@ function UserMenu() {
     logout();
   }
 
-  function handleCloseUserMenu(params: type) {
+  function handleCloseUserMenu() {
     setUserMenuOpen(false);
   }
 
@@ -40,7 +40,7 @@ function UserMenu() {
         <>
           <button
             onClick={handleToggleUserMenu}
-            className="cursor-pointer flex items-center gap-2 rounded-full pl-0.5 pr-3 py-0.5 hover:bg-white/10 transition-all duration-200 max-w-[160px] sm:max-w-[200px]"
+            className="cursor-pointer flex items-center gap-2 rounded-full pl-0.5 pr-3 py-0.5 hover:bg-white/10 transition-all duration-200 max-w-40 sm:max-w-50"
           >
             <img
               className="w-7 h-7 rounded-full object-cover shrink-0 ring-2 ring-white/30"

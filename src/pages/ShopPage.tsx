@@ -43,7 +43,9 @@ function ShopPage() {
   if (isError) {
     const errorMessage =
       error?.message || "An error occurred while loading products.";
-    return <p className="py-10 text-center text-sm text-red-500">{errorMessage}</p>;
+    return (
+      <p className="py-10 text-center text-sm text-red-500">{errorMessage}</p>
+    );
   }
 
   const currentData = query ? searchedProducts : data;
@@ -68,7 +70,9 @@ function ShopPage() {
             ))}
           </>
         ) : (
-          <p className="col-span-full py-10 text-center text-sm text-slate-400">No products match your search.</p>
+          <p className="col-span-full py-10 text-center text-sm text-slate-400">
+            No products match your search.
+          </p>
         )}
       </div>
       {numPages > 1 && <Pagination numPages={numPages} />}
